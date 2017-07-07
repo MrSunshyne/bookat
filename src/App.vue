@@ -4,8 +4,9 @@
       <h1 class="md-title">Bookat</h1>
     </md-toolbar>
     <main>
-      <img src="./assets/logo.png" alt="Bookat">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </main>
   </div>
 </template>
@@ -24,4 +25,13 @@ body {
 main {
   padding: 16px;
 }
+
+.fade-enter-active {
+  transition: opacity .5s
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="home">
+    <img src="../assets/logo.png" alt="Bookat">
     <h1>{{ msg }}</h1>
     <div>
       <md-button>Default</md-button>
@@ -22,7 +23,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'home',
   data() {
     return {
       msg: 'Welcome to Your Bookat',
@@ -32,7 +33,11 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+.home {
+  text-align: center;
+}
+
 h1, h2 {
   font-weight: normal;
 }
