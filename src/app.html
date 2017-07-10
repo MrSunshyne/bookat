@@ -16,7 +16,7 @@
     <md-progress id="state-progress" md-indeterminate class="md-accent"></md-progress>
   </md-toolbar>
 
-  <main ref="main" class="cs-view-container" :class="$route.meta.styleClass">
+  <main ref="main" class="cs-view-container" :class="$route.meta.viewContainerClass">
     <transition name="fade">
       <router-view></router-view>
     </transition>

@@ -27,8 +27,7 @@ const router = new Router({
       name: 'Login',
       component: Login,
       meta: {
-        authenticated: false,
-        styleClass: 'cs-view-container-at-auth',
+        requiresAuth: false,
       },
     },
     {
@@ -36,8 +35,7 @@ const router = new Router({
       name: 'Signup',
       component: Signup,
       meta: {
-        authenticated: false,
-        styleClass: 'cs-view-container-at-auth',
+        requiresAuth: false,
       },
     },
     {
@@ -45,8 +43,7 @@ const router = new Router({
       name: 'Account Reset',
       component: AccountReset,
       meta: {
-        authenticated: false,
-        styleClass: 'cs-view-container-at-auth',
+        requiresAuth: false,
       },
     },
     {
@@ -54,8 +51,7 @@ const router = new Router({
       name: 'About',
       component: About,
       meta: {
-        authenticated: false,
-        styleClass: '',
+        requiresAuth: false,
       },
     },
     {
@@ -63,8 +59,7 @@ const router = new Router({
       name: 'Home',
       component: Home,
       meta: {
-        authenticated: true,
-        styleClass: '',
+        requiresAuth: true,
       },
     },
     {
@@ -72,8 +67,7 @@ const router = new Router({
       name: 'Profile',
       component: Profile,
       meta: {
-        authenticated: true,
-        styleClass: '',
+        requiresAuth: true,
       },
     },
   ],
@@ -81,15 +75,31 @@ const router = new Router({
 
 export default router;
 
+const AUTH_ROUTES = ['/login', '/signup', '/reset'];
+
 router.beforeEach((to, from, next) => {
-  if (to.meta.authenticated && !store.getters.authenticated) {
+  if (to.matched.length === 0) {
+    next(store.getters.authenticated ? '/home' : '/login');
+    return;
+  }
+
+  if (to.meta.requiresAuth && !store.getters.authenticated) {
     next('/login');
     return;
   }
+
+  if (AUTH_ROUTES.includes(to.path) && store.getters.authenticated) {
+    next('/home');
+    return;
+  }
+
+  if (store.getters.authenticated) {
+    to.meta.viewContainerClass = `cs-view-container-at-auth ${to.meta.viewContainerClass || ''}`; /* eslint no-param-reassign: off */
+  }
+
   next();
 });
 
 router.afterEach((to /* , from*/) => {
   document.title = `Bookat | ${to.name}`;
-  document.body.querySelector('#app > main').scrollTop = 0;
 });

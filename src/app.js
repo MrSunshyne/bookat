@@ -26,8 +26,7 @@ export default {
     },
   },
   created() {
-    this.$router.afterEach((to /* , from*/ ) => {
-      document.title = `Bookat | ${to.name}`;
+    this.$router.afterEach(( /* to , from */ ) => {
       this._resetScroll();
       this._closeNavigation();
     });
