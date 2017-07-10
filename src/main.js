@@ -4,7 +4,7 @@ import Vue from 'vue';
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.css';
 
-import App from './App';
+import app from './app';
 import store from './store';
 import router from './router';
 
@@ -23,6 +23,6 @@ new Vue({
   el: '#app',
   store,
   router,
-  template: '<App/>',
-  components: { App },
+  template: '<app/>',
+  components: { app },
 });

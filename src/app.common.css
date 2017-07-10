@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 47%, rgba(237, 237, 237, 1) 100%);
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#app>main {
+  flex: 1;
+  position: relative;
+}
+
+.cs-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.cs-view-container-at-auth {
+  background: rgba(237, 237, 237, 1);
+  background: linear-gradient(to bottom, rgba(237, 237, 237, 1) 0%, rgba(246, 246, 246, 1) 53%, rgba(255, 255, 255, 1) 100%);
+}
+
+.cs-view {
+  flex-shrink: 0;
+  margin: auto;
+}
+
+.cs-view-content {
+  padding: 16px;
+  max-width: 400px;
+}
+
+.cs-view-align-top {
+  align-self: center;
+}
+
+@media all and (max-width: 500px) {}
+
+.cs-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cs-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-flex-row>*,
+.cs-flex-column>* {
+  flex: 1;
+}
+
+.cs-flex-cell {
+  flex: 1;
+}
+
+.cs-text-center {
+  text-align: center;
+}
+
+.cs-logo {
+  height: 32px;
+}
+
+form>.md-input-container {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.fade-enter-active {
+  transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}
