@@ -1,34 +1,31 @@
 export default {
   name: 'app',
   methods: {
+
     openNavigation() {
       if (!this.$refs.navigation) {
         return;
       }
       this.$refs.navigation.open();
     },
-    _closeNavigation() {
-      if (!this.$refs.navigation) {
-        return;
+
+    onRouteChanged() {
+      if (this.$refs.navigation) {
+        this.$refs.navigation.close();
       }
-      this.$refs.navigation.close();
-    },
-    _resetScroll() {
-      if (!this.$refs.main) {
-        return;
+
+      if (this.$refs.main) {
+        this.$refs.main.scrollTop = 0;
       }
-      this.$refs.main.scrollTop = 0;
     },
+
     logout() {
       this.$store.commit('logout');
       this.$router.push('/login');
-      this._closeNavigation();
     },
+
   },
   created() {
-    this.$router.afterEach(( /* to , from */ ) => {
-      this._resetScroll();
-      this._closeNavigation();
-    });
+    this.$router.afterEach(this.onRouteChanged);
   },
 };
