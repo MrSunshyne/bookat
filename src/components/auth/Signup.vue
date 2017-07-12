@@ -45,13 +45,13 @@
       </md-input-container>
 
       <div class="cs-flex-row">
-        <md-button class="md-google" @click="connectWithGoogle">Google</md-button>
-        <md-button class="md-facebook" @click="connectWithFacebook">Facebook</md-button>
+        <md-button class="md-google" @click="loginWithGoogle">Google</md-button>
+        <md-button class="md-facebook" @click="loginWithFacebook">Facebook</md-button>
       </div>
 
       <!--<div class="cs-flex-column">
-        <md-button class="md-google" @click="connectWithGoogle">Connect with Google</md-button>
-        <md-button class="md-facebook" @click="connectWithFacebook">Connect with Facebook</md-button>
+        <md-button class="md-google" @click="loginWithGoogle">login with Google</md-button>
+        <md-button class="md-facebook" @click="loginWithFacebook">login with Facebook</md-button>
       </div>-->
 
       <md-button class="md-raised md-primary" type="submit">Signup</md-button>
@@ -74,10 +74,6 @@
       </router-link>
 
     </div>
-
-    <md-dialog-alert md-title="Google Signup" md-content="Coming soon!" ref="comingSoonGoogleDialog"></md-dialog-alert>
-
-    <md-dialog-alert md-title="Facebook Signup" md-content="Coming soon!" ref="comingSoonFacebookDialog"></md-dialog-alert>
 
   </div>
 </template>
@@ -170,7 +166,7 @@ export default {
         });
       }).then((user) => {
         debug(user);
-        this.$store.commit('login', {
+        this.$store.dispatch('LOGIN', {
           token: 'true',
           user: {
             id: user.uid,
@@ -180,7 +176,6 @@ export default {
             picture: user.photoURL,
           },
         });
-        this.$router.push('/home');
       })
         .catch((error) => {
           debug.error(error, Object.assign({}, error));
@@ -203,12 +198,74 @@ export default {
           this.$refs.snackbar.open();
         });
     },
-    connectWithGoogle() {
-      this.$refs.comingSoonGoogleDialog.open();
+
+    loginWithGoogle() {
+      debug('loginWithGoogle');
+
+      this.$data.error = {};
+
+      const provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('email');
+      provider.addScope('profile');
+      firebase.auth().signInWithPopup(provider).then((result) => {
+        debug(result.user);
+
+        this.$store.dispatch('LOGIN', {
+          token: 'true',
+          user: {
+            id: result.user.uid,
+            name: result.user.displayName,
+            email: result.user.email,
+            phone: result.user.phoneNumber,
+            picture: result.user.photoURL,
+          },
+        });
+      })
+        .catch((error) => {
+          debug.error(error, Object.assign({}, error));
+
+          this.$data.error = {};
+
+          this.$data.error.$message = error.message;
+
+          this.$refs.snackbar.open();
+        });
     },
-    connectWithFacebook() {
-      this.$refs.comingSoonFacebookDialog.open();
+
+    loginWithFacebook() {
+      debug('loginWithFacebook');
+
+      this.$data.error = {};
+
+      const provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope('email');
+      provider.addScope('public_profile');
+      firebase.auth().signInWithPopup(provider).then((result) => {
+        debug(result.user);
+
+        this.$store.dispatch('LOGIN', {
+          token: 'true',
+          user: {
+            id: result.user.uid,
+            name: result.user.displayName,
+            email: result.user.email,
+            phone: result.user.phoneNumber,
+            picture: result.user.photoURL,
+          },
+        });
+        this.$router.push('/home');
+      })
+        .catch((error) => {
+          debug.error(error, Object.assign({}, error));
+
+          this.$data.error = {};
+
+          this.$data.error.$message = error.message;
+
+          this.$refs.snackbar.open();
+        });
     },
+
   },
 };
 </script>

@@ -104,6 +104,7 @@ export default {
     };
   },
   methods: {
+
     login() {
       debug('login');
 
@@ -114,7 +115,8 @@ export default {
         this.$data.password,
       ).then((user) => {
         debug(user);
-        this.$store.commit('login', {
+
+        this.$store.dispatch('LOGIN', {
           token: 'true',
           user: {
             id: user.uid,
@@ -124,7 +126,6 @@ export default {
             picture: user.photoURL,
           },
         });
-        this.$router.push('/home');
       })
         .catch((error) => {
           debug.error(error, Object.assign({}, error));
@@ -151,6 +152,7 @@ export default {
           this.$refs.snackbar.open();
         });
     },
+
     loginWithGoogle() {
       debug('loginWithGoogle');
 
@@ -161,8 +163,8 @@ export default {
       provider.addScope('profile');
       firebase.auth().signInWithPopup(provider).then((result) => {
         debug(result.user);
-        debugger;
-        this.$store.commit('login', {
+
+        this.$store.dispatch('LOGIN', {
           token: 'true',
           user: {
             id: result.user.uid,
@@ -172,7 +174,6 @@ export default {
             picture: result.user.photoURL,
           },
         });
-        this.$router.push('/home');
       })
         .catch((error) => {
           debug.error(error, Object.assign({}, error));
@@ -184,6 +185,7 @@ export default {
           this.$refs.snackbar.open();
         });
     },
+
     loginWithFacebook() {
       debug('loginWithFacebook');
 
@@ -194,8 +196,8 @@ export default {
       provider.addScope('public_profile');
       firebase.auth().signInWithPopup(provider).then((result) => {
         debug(result.user);
-        debugger;
-        this.$store.commit('login', {
+
+        this.$store.dispatch('LOGIN', {
           token: 'true',
           user: {
             id: result.user.uid,
@@ -217,6 +219,7 @@ export default {
           this.$refs.snackbar.open();
         });
     },
+
   },
 };
 </script>

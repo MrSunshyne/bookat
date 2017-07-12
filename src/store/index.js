@@ -30,11 +30,24 @@ const store = new Vuex.Store({
     },
   },
   actions: {
+
+    LOGIN(context, {
+      token,
+      user,
+    }) {
+      context.commit('login', {
+        token,
+        user,
+      });
+      router.push('/home');
+    },
+
     LOGOUT(context) {
       context.commit('logout');
       firebase.auth().signOut();
       router.push('/login');
     },
+
   },
   getters: {
     authenticated: state => !!state.token,
