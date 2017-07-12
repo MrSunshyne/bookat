@@ -183,7 +183,7 @@ export default {
         this.$router.push('/home');
       })
         .catch((error) => {
-          debug.error(Object.assign({}, error));
+          debug.error(error, Object.assign({}, error));
           this.$data.error = {};
 
           const code = FIREBASE_TO_LANG[error.code] || error.code;
