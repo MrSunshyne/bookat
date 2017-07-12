@@ -14,7 +14,7 @@
         <!--<md-spinner :md-size="36" md-indeterminate class="md-accent"></md-spinner>-->
       </div>
 
-      <md-progress id="state-progress" md-indeterminate class="md-accent"></md-progress>
+      <!--<md-progress id="state-progress" md-indeterminate class="md-accent"></md-progress>-->
     </md-toolbar>
 
     <main ref="main" class="cs-view-container" :class="$route.meta.viewContainerClass">
