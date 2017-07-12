@@ -3,6 +3,13 @@
 
     <h1>{{ msg }}</h1>
 
+    <ul>
+      <li>name: {{$store.state.user.name}}</li>
+      <li>email: {{$store.state.user.email}}</li>
+      <li>phone: {{$store.state.user.phone}}</li>
+      <li>picture: {{$store.state.user.picture}}</li>
+    </ul>
+
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nunc nibh, pharetra ut magna non, mollis imperdiet ipsum. Duis ullamcorper mattis felis, et bibendum eros mollis in. Donec tristique leo egestas, porta nibh eget, rhoncus ipsum. Integer ex nunc, vestibulum id odio ut, auctor congue nibh. Vestibulum mauris nisi, sollicitudin in elit et, tempus blandit metus. Ut blandit tortor non lorem varius, et blandit velit pulvinar. Cras lorem massa, mollis a accumsan vitae, vulputate sed quam. Praesent ante lacus, sollicitudin a ipsum at, dictum blandit purus. Donec condimentum lorem tortor, eu malesuada odio mattis eu. Curabitur tincidunt nulla a diam elementum dictum. Fusce dignissim egestas est et tempor. Nunc vestibulum, nibh aliquet fermentum tempor, ipsum odio feugiat mauris, vel cursus neque urna in quam. Suspendisse a velit sapien. Mauris feugiat risus ut metus venenatis, non porta nisl aliquam. Vestibulum malesuada magna nunc.
     </p>

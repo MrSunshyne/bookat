@@ -1,4 +1,80 @@
-<template src="./app.html"></template>
+<template>
+  <div id="app">
+
+    <md-toolbar v-if="$store.getters.authenticated">
+      <div class="md-toolbar-container">
+        <md-button class="md-icon-button" @click="openNavigation">
+          <md-icon>menu</md-icon>
+        </md-button>
+
+        <h2 class="md-title" style="flex: 1">bookAt | {{$route.name}}</h2>
+
+        <router-view name="actions"></router-view>
+
+        <!--<md-spinner :md-size="36" md-indeterminate class="md-accent"></md-spinner>-->
+      </div>
+
+      <md-progress id="state-progress" md-indeterminate class="md-accent"></md-progress>
+    </md-toolbar>
+
+    <main ref="main" class="cs-view-container" :class="$route.meta.viewContainerClass">
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
+    </main>
+
+    <md-sidenav class="md-left" ref="navigation" v-if="$store.getters.authenticated">
+      <md-toolbar class="md-account-header">
+        <md-list class="md-transparent">
+          <md-list-item class="md-avatar-list">
+            <md-avatar class="md-large">
+              <img :src="$store.state.user.picture" alt="User">
+            </md-avatar>
+          </md-list-item>
+
+          <md-list-item>
+            <div class="md-list-text-container">
+              <span>{{$store.state.user.name}}</span>
+              <span>{{$store.state.user.email}}</span>
+              <span>{{$store.state.user.phone}}</span>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-toolbar>
+
+      <md-list class="md-transparent">
+
+        <md-list-item>
+          <router-link to="/home">
+            <md-icon>move_to_inbox</md-icon>
+            <span>Home</span>
+          </router-link>
+        </md-list-item>
+
+        <md-list-item>
+          <router-link to="/profile">
+            <md-icon>person</md-icon>
+            <span>Profile</span>
+          </router-link>
+        </md-list-item>
+
+        <md-list-item>
+          <router-link to="/about">
+            <md-icon>info_outline</md-icon>
+            <span>About</span>
+          </router-link>
+        </md-list-item>
+
+        <md-list-item @click="logout">
+          <md-icon>exit_to_app</md-icon>
+          <span>Logout</span>
+        </md-list-item>
+      </md-list>
+
+    </md-sidenav>
+
+  </div>
+</template>
 
 <script src="./app.js"></script>
 

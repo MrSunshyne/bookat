@@ -6,16 +6,18 @@
 
     <form class="cs-flex-column" novalidate @submit.prevent="login">
 
-      <md-input-container>
+      <md-input-container :class="error.username ? 'md-input-invalid' : ''">
         <md-icon>person</md-icon>
         <label>Username</label>
         <md-input required v-model="username" autofocus></md-input>
+        <span class="md-error">{{error.username}}</span>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container :class="error.password ? 'md-input-invalid' : ''">
         <md-icon>lock</md-icon>
         <label>Password</label>
         <md-input required type="password" v-model="password"></md-input>
+        <span class="md-error">{{error.password}}</span>
       </md-input-container>
 
       <md-button class="md-raised md-primary" type="submit">Login</md-button>
@@ -29,6 +31,11 @@
         <md-button class="md-raised md-google" @click="loginWithGoogle">Login with Google</md-button>
         <md-button class="md-raised md-facebook" @click="loginWithFacebook">Login with Facebook</md-button>
       </div>-->
+
+      <md-snackbar ref="snackbar">
+        <span>{{error.$message}}</span>
+        <md-button class="md-accent" @click="$refs.snackbar.close()">Ok</md-button>
+      </md-snackbar>
 
     </form>
 
@@ -75,9 +82,18 @@
 </template>
 
 <script>
+import debug from '@/common/debug';
+import firebase from '@/common/firebase';
+
+import LANG from '@/common/lang';
+
 import AboutContent from '../AboutContent';
 
-// import firebase from './common/firebase';
+const FIREBASE_TO_LANG = {
+  'auth/invalid-email': 'InvalidUsername',
+  'auth/user-not-found': 'UserNotFound',
+  'auth/wrong-password': 'LoginFailure',
+};
 
 export default {
   name: 'login',
@@ -88,20 +104,56 @@ export default {
     return {
       username: '',
       password: '',
+      error: {},
     };
   },
   methods: {
     login() {
-      this.$store.commit('login', {
-        token: '123',
-        user: {
-          id: '0',
-          name: 'Nader T.',
-          email: 'nader@bookat.tn',
-          phone: '25199525',
-        },
-      });
-      this.$router.push('/home');
+      debug('login');
+
+      this.$data.error = {};
+
+      firebase.auth().signInWithEmailAndPassword(
+        this.$data.username,
+        this.$data.password,
+      ).then((user) => {
+        debug(user);
+        this.$store.commit('login', {
+          token: 'true',
+          user: {
+            id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            phone: user.phoneNumber,
+            picture: user.photoURL,
+          },
+        });
+        this.$router.push('/home');
+      })
+        .catch((error) => {
+          debug.error(Object.assign({}, error));
+
+          this.$data.error = {};
+
+          const code = FIREBASE_TO_LANG[error.code] || error.code;
+          const message = LANG.ERROR[code] || error.message;
+
+          if (code === 'InvalidUsername') {
+            this.$data.error.username = message;
+          }
+
+          if (code === 'UserNotFound') {
+            this.$data.error.username = message;
+          }
+
+          if (code === 'LoginFailure') {
+            this.$data.error.$message = message;
+          }
+
+          this.$data.error.$message = this.$data.error.$message || error.message;
+
+          this.$refs.snackbar.open();
+        });
     },
     loginWithGoogle() {
       this.$refs.comingSoonGoogleDialog.open();

@@ -13,6 +13,6 @@ const config = {
 };
 firebase.initializeApp(config);
 
-global.firebase = firebase;
+// global.firebase = firebase;
 
 export default firebase;

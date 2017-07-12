@@ -2,6 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 
+import router from '@/router';
+
+import firebase from '@/common/firebase';
+
 Vue.use(Vuex);
 
 /* eslint no-param-reassign: ["error", { "props": false }] */
@@ -23,6 +27,13 @@ const store = new Vuex.Store({
     logout(state) {
       state.token = null;
       state.user = null;
+    },
+  },
+  actions: {
+    LOGOUT(context) {
+      context.commit('logout');
+      firebase.auth().signOut();
+      router.push('/login');
     },
   },
   getters: {
