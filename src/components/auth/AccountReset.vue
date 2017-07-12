@@ -2,7 +2,7 @@
   <div class="cs-view">
 
     <div class="cs-text-center">
-      <img src="../../assets/logo.png" alt="Bookat" class="logo">
+      <img src="../../assets/logo.png" alt="bookAt" class="logo">
     </div>
 
     <div class="md-title cs-text-center">Account Reset</div>

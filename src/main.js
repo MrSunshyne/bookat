@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 
 import VueMaterial from 'vue-material';
@@ -7,6 +6,9 @@ import 'vue-material/dist/vue-material.css';
 import App from './App';
 import store from './store';
 import router from './router';
+import './data';
+
+import './common/firebase';
 
 Vue.use(VueMaterial);
 
@@ -24,5 +26,9 @@ new Vue({
   store,
   router,
   template: '<App/>',
-  components: { App },
+  components: {
+    App,
+  },
 });
+
+// global.require = module => require(module); /* eslint global-require: off */

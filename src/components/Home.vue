@@ -1,7 +1,7 @@
 <template>
   <div class="cs-view">
     <div class="cs-text-center">
-      <img src="../assets/logo.png" alt="Bookat">
+      <img src="../assets/logo.png" alt="bookAt">
       <h1>{{ msg }}</h1>
     </div>
   </div>
@@ -12,7 +12,7 @@ export default {
   name: 'home',
   data() {
     return {
-      msg: 'Welcome to Bookat',
+      msg: 'Welcome to bookAt',
     };
   },
 };

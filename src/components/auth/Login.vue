@@ -1,7 +1,7 @@
 <template>
   <div class="cs-view">
     <div class="cs-text-center">
-      <img src="../../assets/logo.png" alt="Bookat" class="logo">
+      <img src="../../assets/logo.png" alt="bookAt" class="logo">
     </div>
 
     <form class="cs-flex-column" novalidate @submit.prevent="login">
@@ -58,7 +58,7 @@
 
     </div>
 
-    <!--<md-dialog md-open-from="#aboutButton" md-close-to="#aboutButton" ref="aboutDialog" md-title="About Bookat">
+    <!--<md-dialog md-open-from="#aboutButton" md-close-to="#aboutButton" ref="aboutDialog" md-title="About bookAt">
       <md-dialog-title>Create new note</md-dialog-title>
 
       <md-dialog-content>
@@ -76,6 +76,8 @@
 
 <script>
 import AboutContent from '../AboutContent';
+
+// import firebase from './common/firebase';
 
 export default {
   name: 'login',

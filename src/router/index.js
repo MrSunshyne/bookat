@@ -101,5 +101,5 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((to /* , from*/) => {
-  document.title = `Bookat | ${to.name}`;
+  document.title = `bookAt | ${to.name}`;
 });
