@@ -9,7 +9,7 @@
 
         <h2 class="md-title" style="flex: 1">bookAt | {{$route.name}}</h2>
 
-        <router-view name="actions"></router-view>
+        <router-view name="toolbar"></router-view>
 
         <!--<md-spinner :md-size="36" md-indeterminate class="md-accent"></md-spinner>-->
       </div>
