@@ -159,7 +159,7 @@ export default {
         return user.updateProfile({
           displayName: this.$data.name,
           phoneNumber: this.$data.phone,
-          photoURL: 'https://placeimg.com/64/64/people/8',
+          photoURL: '/static/img/user-picture.png,
         }).then((...args) => {
           debug(args);
           return user;
@@ -173,7 +173,7 @@ export default {
             name: user.displayName,
             email: user.email,
             phone: user.phoneNumber,
-            picture: user.photoURL,
+            picture: user.photoURL || '/static/img/user-picture.png',
           },
         });
       })
@@ -217,7 +217,7 @@ export default {
             name: result.user.displayName,
             email: result.user.email,
             phone: result.user.phoneNumber,
-            picture: result.user.photoURL,
+            picture: result.user.photoURL || '/static/img/user-picture.png',
           },
         });
       })
@@ -250,7 +250,7 @@ export default {
             name: result.user.displayName,
             email: result.user.email,
             phone: result.user.phoneNumber,
-            picture: result.user.photoURL,
+            picture: result.user.photoURL || '/static/img/user-picture.png',
           },
         });
         this.$router.push('/home');
