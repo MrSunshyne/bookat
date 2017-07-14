@@ -159,7 +159,7 @@ export default {
         return user.updateProfile({
           displayName: this.$data.name,
           phoneNumber: this.$data.phone,
-          photoURL: '/static/img/user-picture.png,
+          photoURL: '/static/img/user-picture.png',
         }).then((...args) => {
           debug(args);
           return user;
