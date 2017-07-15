@@ -36,7 +36,3 @@ export default {
 </script>
 
 <style scoped src="./auth/common.css"></style>
-
-<style scoped>
-
-</style>

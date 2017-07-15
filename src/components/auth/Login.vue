@@ -28,9 +28,9 @@
       </div>
 
       <!--<div class="cs-flex-column">
-          <md-button class="md-raised md-google" @click="loginWithGoogle">Login with Google</md-button>
-          <md-button class="md-raised md-facebook" @click="loginWithFacebook">Login with Facebook</md-button>
-        </div>-->
+        <md-button class="md-raised md-google" @click="loginWithGoogle">Login with Google</md-button>
+        <md-button class="md-raised md-facebook" @click="loginWithFacebook">Login with Facebook</md-button>
+      </div>-->
 
       <md-snackbar ref="snackbar">
         <span>{{error.$message}}</span>
@@ -54,9 +54,9 @@
     <div class="extra">
 
       <!--<md-button class="md-primary" id="aboutButton" @click="$refs.aboutDialog.open()">
-          <md-icon>info_outline</md-icon>
-          About
-        </md-button>-->
+        <md-icon>info_outline</md-icon>
+        About
+      </md-button>-->
 
       <router-link tag="md-button" class="md-primary" to="/about">
         <md-icon>info_outline</md-icon>
@@ -66,163 +66,18 @@
     </div>
 
     <!--<md-dialog md-open-from="#aboutButton" md-close-to="#aboutButton" ref="aboutDialog" md-title="About bookAt">
-        <md-dialog-title>Create new note</md-dialog-title>
+      <md-dialog-title>Create new note</md-dialog-title>
 
-        <md-dialog-content>
-          <about-content></about-content>
-        </md-dialog-content>
+      <md-dialog-content>
+        <about-content></about-content>
+      </md-dialog-content>
 
-      </md-dialog>-->
+    </md-dialog>-->
 
   </div>
 </template>
 
-<script>
-import debug from '@/common/debug';
-import firebase from '@/common/firebase';
-
-import LANG from '@/common/lang';
-
-import AboutContent from '../AboutContent';
-
-const FIREBASE_TO_LANG = {
-  'auth/invalid-email': 'InvalidUsername',
-  'auth/user-not-found': 'UserNotFound',
-  'auth/wrong-password': 'LoginFailure',
-};
-
-export default {
-  name: 'login',
-  components: {
-    AboutContent,
-  },
-  data() {
-    return {
-      username: '',
-      password: '',
-      error: {},
-    };
-  },
-  methods: {
-
-    login() {
-      debug('login');
-
-      this.$data.error = {};
-
-      firebase.auth().signInWithEmailAndPassword(
-        this.$data.username,
-        this.$data.password,
-      ).then((user) => {
-        debug(user);
-
-        this.$store.dispatch('LOGIN', {
-          token: 'true',
-          user: {
-            id: user.uid,
-            name: user.displayName,
-            email: user.email,
-            phone: user.phoneNumber,
-            picture: user.photoURL || '/static/img/user-picture.png',
-          },
-        });
-      })
-        .catch((error) => {
-          debug.error(error, Object.assign({}, error));
-
-          this.$data.error = {};
-
-          const code = FIREBASE_TO_LANG[error.code] || error.code;
-          const message = LANG.ERROR[code] || error.message;
-
-          if (code === 'InvalidUsername') {
-            this.$data.error.username = message;
-          }
-
-          if (code === 'UserNotFound') {
-            this.$data.error.username = message;
-          }
-
-          if (code === 'LoginFailure') {
-            this.$data.error.$message = message;
-          }
-
-          this.$data.error.$message = this.$data.error.$message || error.message;
-
-          this.$refs.snackbar.open();
-        });
-    },
-
-    loginWithGoogle() {
-      debug('loginWithGoogle');
-
-      this.$data.error = {};
-
-      const provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('email');
-      provider.addScope('profile');
-      firebase.auth().signInWithPopup(provider).then((result) => {
-        debug(result.user);
-
-        this.$store.dispatch('LOGIN', {
-          token: 'true',
-          user: {
-            id: result.user.uid,
-            name: result.user.displayName,
-            email: result.user.email,
-            phone: result.user.phoneNumber,
-            picture: result.user.photoURL || '/static/img/user-picture.png',
-          },
-        });
-      })
-        .catch((error) => {
-          debug.error(error, Object.assign({}, error));
-
-          this.$data.error = {};
-
-          this.$data.error.$message = error.message;
-
-          this.$refs.snackbar.open();
-        });
-    },
-
-    loginWithFacebook() {
-      debug('loginWithFacebook');
-
-      this.$data.error = {};
-
-      const provider = new firebase.auth.FacebookAuthProvider();
-      provider.addScope('email');
-      provider.addScope('public_profile');
-      firebase.auth().signInWithPopup(provider).then((result) => {
-        debug(result.user);
-
-        this.$store.dispatch('LOGIN', {
-          token: 'true',
-          user: {
-            id: result.user.uid,
-            name: result.user.displayName,
-            email: result.user.email,
-            phone: result.user.phoneNumber,
-            picture: result.user.photoURL || '/static/img/user-picture.png',
-          },
-        });
-        this.$router.push('/home');
-      })
-        .catch((error) => {
-          debug.error(error, Object.assign({}, error));
-
-          this.$data.error = {};
-
-          this.$data.error.$message = error.message;
-
-          this.$refs.snackbar.open();
-        });
-    },
-
-  },
-};
-</script>
+<script src="./Login.js"></script>
 
 <style scoped src="./common.css"></style>
 

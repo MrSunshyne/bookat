@@ -17,9 +17,8 @@ LANG.ERROR.Required = 'Required';
 LANG.ERROR.Invalid = 'Invalid';
 LANG.ERROR.InvalidPassword = 'Invalid pssword';
 LANG.ERROR.InvalidEmail = 'Invalid email address';
+LANG.ERROR.ExistingEmail = 'Invalid email address';
 LANG.ERROR.InvalidPhone = 'Invalid phone number';
 LANG.ERROR.PasswordMismatch = 'Password mismatch';
-
-LANG.ERROR.InvalidUsername = 'Invalid username (email)';
 LANG.ERROR.UserNotFound = 'User not found';
 LANG.ERROR.LoginFailure = 'Login failure';

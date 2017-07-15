@@ -4,7 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 
 import router from '@/router';
 
-import firebase from '@/common/firebase';
+import { firebase } from '@/common/firebase';
 
 Vue.use(Vuex);
 
