@@ -100,11 +100,17 @@ var webpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'bookat',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
-      staticFileGlobsIgnorePatterns: [/404\.html$/],
+      staticFileGlobs: ['dist/**/*.{js,css}'],
+      // staticFileGlobsIgnorePatterns: [/^index\.html$/, /^404\.html$/],
       minify: true,
       stripPrefix: 'dist/',
       runtimeCaching: [{
+        urlPattern: '',
+        handler: 'networkFirst'
+      }, {
+        urlPattern: '/',
+        handler: 'networkFirst'
+      }, {
         urlPattern: '/index.html',
         handler: 'networkFirst'
       }, {
