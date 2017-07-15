@@ -77,7 +77,7 @@
   </div>
 </template>
 
-<script src="./Login.js"></script>
+<script src="./Login._.js"></script>
 
 <style scoped src="./common.css"></style>
 

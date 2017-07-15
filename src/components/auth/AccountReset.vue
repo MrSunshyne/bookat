@@ -44,7 +44,7 @@
   </div>
 </template>
 
-<script src="./AccountReset.js"></script>
+<script src="./AccountReset._.js"></script>
 
 <style scoped src="./common.css"></style>
 
