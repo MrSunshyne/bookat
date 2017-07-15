@@ -35,6 +35,13 @@ body {
 .cs-view {
   flex-shrink: 0;
   margin: auto;
+  min-width: 100%;
+}
+
+@media (min-width: 400px) {
+  .cs-view {
+    min-width: 300px;
+  }
 }
 
 .cs-view-content {
@@ -46,7 +53,7 @@ body {
   align-self: center;
 }
 
-@media all and (max-width: 500px) {}
+
 
 .cs-flex-row {
   display: flex;
@@ -75,12 +82,15 @@ body {
   height: 32px;
 }
 
-form>.md-input-container {
-  padding-left: 8px;
-  padding-right: 8px;
+form {
+  margin: 8px;
 }
 
-
+form .md-input-container {
+  width: auto;
+  margin-left: 8px;
+  margin-right: 8px;
+}
 
 .fade-enter-active {
   display: block;
