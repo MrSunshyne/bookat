@@ -1,6 +1,4 @@
-import {
-  debugFactory,
-} from '@/common/debug';
+import { debugFactory } from '@/common/debug';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -37,10 +35,10 @@ export const FIREBASE_TO_LANG = {
 
 };
 
-firebase.auth().onAuthStateChanged((user) => {
+export const onAuthStateChanged = (user) => {
   debug('user', user);
 
-  if (user) {
+  if (user && user.displayName) {
     // User is signed in.
 
     store.dispatch('LOGIN', {
@@ -59,4 +57,8 @@ firebase.auth().onAuthStateChanged((user) => {
 
     // ...
   }
-});
+
+  return user;
+};
+
+firebase.auth().onAuthStateChanged(onAuthStateChanged);

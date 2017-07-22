@@ -32,7 +32,8 @@
 </head>
 
 <body>
-  <div id="app">This is your fallback content in case JavaScript fails to load.</div>
+  <noscript>This is your fallback content in case JavaScript fails to load.</noscript>
+  <div id="app"></div>
   <!-- Todo: only include in production -->
   <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->

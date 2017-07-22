@@ -54,10 +54,12 @@
         <md-button class="md-facebook" @click="loginWithFacebook">login with Facebook</md-button>
       </div>-->
 
+      <md-button class="md-primary" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
+
       <md-button class="md-raised md-primary" type="submit">Signup</md-button>
 
       <md-snackbar ref="snackbar">
-        <span>{{error.$message}}</span>
+        <span>{{error.summary}}</span>
         <md-button class="md-accent" @click="$refs.snackbar.close()">Ok</md-button>
       </md-snackbar>
 

@@ -1,12 +1,15 @@
 import { debugFactory } from '@/common/debug';
-import { firebase, FIREBASE_TO_LANG } from '@/common/firebase';
+import { firebase, FIREBASE_TO_LANG, onAuthStateChanged } from '@/common/firebase';
+import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
 
 const debug = debugFactory('@/components/auth/Signup');
 
 export default {
+
   name: 'signup',
+
   data() {
     return {
       error: {},
@@ -17,90 +20,78 @@ export default {
       passwordConfirmation: '',
     };
   },
+
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   methods: {
+
     signup() {
       debug('signup');
 
-      this.$data.error = {};
+      this.$validator.reset();
 
-      if (!this.$data.name) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.name = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
-
-      if (!this.$data.email) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.email = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
-
-      if (!this.$data.phone) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.phone = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
-
-      if (!this.$data.password) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.password = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
-
-      if (!this.$data.password && !this.$data.passwordConfirmation) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.passwordConfirmation = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
+      this.$validator.field('name').required();
+      this.$validator.field('email').required();
+      this.$validator.field('phone').required();
+      this.$validator.field('password').required();
+      this.$validator.field('passwordConfirmation').required();
 
       if (this.$data.password !== this.$data.passwordConfirmation) {
         const message = LANG.ERROR.PasswordMismatch;
-        this.$data.error.password = message;
-        this.$data.error.passwordConfirmation = message;
-        this.$data.error.$message = this.$data.error.$message || message;
+        this.$validator.field('password').error(message, false);
+        this.$validator.field('passwordConfirmation').error(message, false);
+        this.$validator.summary(message);
       }
 
-      if (this.$data.error.$message) {
+      if (this.$data.error.summary) {
         this.$refs.snackbar.open();
         return;
       }
 
-      firebase.auth().createUserWithEmailAndPassword(
-        this.$data.email,
-        this.$data.password,
-      ).then(user => user.updateProfile({
+      const profile = {
         displayName: this.$data.name,
-        phoneNumber: this.$data.phone,
         photoURL: 'https://bookat.lab.nader.tn/static/img/user-picture.png',
-      })
-        .then(() => user.sendEmailVerification())
-        .then(() => user),
-      ).catch((error) => {
-        debug.error(error, Object.assign({}, error));
-        this.$data.error = {};
+      };
 
-        const code = FIREBASE_TO_LANG[error.code] || error.code;
-        const message = LANG.ERROR[code] || error.message;
+      firebase.auth().createUserWithEmailAndPassword(
+          this.$data.email,
+          this.$data.password,
+        )
+        .then(user => user.updateProfile(profile).then(() => user) /* resolves into void */)
+        .then(user => user.sendEmailVerification().then(() => user) /* resolves into void */)
+        .then(user => onAuthStateChanged(user))
+        .catch((error) => {
+          debug.error(error, Object.assign({}, error));
+          this.$validator.reset();
 
-        if (code === 'InvalidEmail') {
-          this.$data.error.email = message;
-        }
+          const code = FIREBASE_TO_LANG[error.code] || error.code;
+          const message = LANG.ERROR[code] || error.message;
 
-        if (code === 'InvalidPassword') {
-          this.$data.error.password = message;
-          this.$data.error.passwordConfirmation = message;
-        }
+          if (code === 'InvalidEmail') {
+            this.$validator.field('email').error(message, false);
+          }
 
-        this.$data.error.$message = this.$data.error.$message || error.message;
+          if (code === 'ExistingEmail') {
+            this.$validator.field('email').error(message, false);
+          }
 
-        this.$refs.snackbar.open();
-      });
+          if (code === 'InvalidPassword') {
+            this.$validator.field('password').error(message, false);
+            this.$validator.field('passwordConfirmation').error(message, false);
+          }
+
+          this.$validator.summary(error.message);
+
+          this.$refs.snackbar.open();
+        });
     },
 
     loginWithGoogle() {
       debug('loginWithGoogle');
 
-      this.$data.error = {};
+      this.$validator.reset();
 
       const provider = new firebase.auth.GoogleAuthProvider();
       provider.addScope('email');
@@ -108,9 +99,9 @@ export default {
       firebase.auth().signInWithPopup(provider).catch((error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
-        this.$data.error.$message = error.message;
+        this.$validator.summary(error.message, true);
 
         this.$refs.snackbar.open();
       });
@@ -119,7 +110,7 @@ export default {
     loginWithFacebook() {
       debug('loginWithFacebook');
 
-      this.$data.error = {};
+      this.$validator.reset();
 
       const provider = new firebase.auth.FacebookAuthProvider();
       provider.addScope('email');
@@ -127,13 +118,22 @@ export default {
       firebase.auth().signInWithPopup(provider).catch((error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
-        this.$data.error.$message = error.message;
+        this.$validator.summary(error.message, true);
 
         this.$refs.snackbar.open();
       });
     },
 
+    fillWithDemoAccount() {
+      this.$data.name = 'Demo Account';
+      this.$data.email = 'demo@bookat.lab.nader.tn';
+      this.$data.phone = '123456789';
+      this.$data.password = 'demopass';
+      this.$data.passwordConfirmation = 'demopass';
+    },
+
   },
+
 };

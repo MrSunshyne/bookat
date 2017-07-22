@@ -25,7 +25,7 @@
     </md-whiteframe>
 
     <md-snackbar ref="snackbar">
-      <span>{{error.$message}}</span>
+      <span>{{error.summary}}</span>
       <md-button class="md-accent" @click="$refs.snackbar.close()">Ok</md-button>
     </md-snackbar>
 

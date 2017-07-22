@@ -1,5 +1,6 @@
 import { debugFactory } from '@/common/debug';
 import { firebase, FIREBASE_TO_LANG } from '@/common/firebase';
+import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
 
@@ -8,48 +9,64 @@ import AboutContent from '../AboutContent';
 const debug = debugFactory('@/components/auth/Login');
 
 export default {
+
   name: 'login',
+
   components: {
     AboutContent,
   },
+
   data() {
     return {
       error: {},
-      username: '',
+      email: '',
       password: '',
     };
   },
+
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   methods: {
 
     login() {
       debug('login');
 
-      this.$data.error = {};
+      this.$validator.reset();
+
+      this.$validator.field('email').required();
+      this.$validator.field('password').required();
+
+      if (this.$data.error.summary) {
+        this.$refs.snackbar.open();
+        return;
+      }
 
       firebase.auth().signInWithEmailAndPassword(
-        this.$data.username,
+        this.$data.email,
         this.$data.password,
       ).catch((error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
         const code = FIREBASE_TO_LANG[error.code] || error.code;
         const message = LANG.ERROR[code] || error.message;
 
         if (code === 'InvalidEmail') {
-          this.$data.error.username = message;
+          this.$validator.field('email').error(message, false);
         }
 
         if (code === 'UserNotFound') {
-          this.$data.error.username = message;
+          this.$validator.field('email').error(message, false);
         }
 
         if (code === 'LoginFailure') {
-          this.$data.error.$message = message;
+          this.$validator.summary(message, true);
         }
 
-        this.$data.error.$message = this.$data.error.$message || error.message;
+        this.$validator.summary(error.message);
 
         this.$refs.snackbar.open();
       });
@@ -58,7 +75,7 @@ export default {
     loginWithGoogle() {
       debug('loginWithGoogle');
 
-      this.$data.error = {};
+      this.$validator.reset();
 
       const provider = new firebase.auth.GoogleAuthProvider();
       provider.addScope('email');
@@ -66,9 +83,9 @@ export default {
       firebase.auth().signInWithPopup(provider).catch((error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
-        this.$data.error.$message = error.message;
+        this.$validator.summary(error.message, true);
 
         this.$refs.snackbar.open();
       });
@@ -77,7 +94,7 @@ export default {
     loginWithFacebook() {
       debug('loginWithFacebook');
 
-      this.$data.error = {};
+      this.$validator.reset();
 
       const provider = new firebase.auth.FacebookAuthProvider();
       provider.addScope('email');
@@ -85,12 +102,17 @@ export default {
       firebase.auth().signInWithPopup(provider).catch((error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
-        this.$data.error.$message = error.message;
+        this.$validator.summary(error.message, true);
 
         this.$refs.snackbar.open();
       });
+    },
+
+    fillWithDemoAccount() {
+      this.$data.email = 'demo@bookat.lab.nader.tn';
+      this.$data.password = 'demopass';
     },
 
   },

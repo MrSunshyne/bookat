@@ -1,13 +1,16 @@
 
 import { debugFactory } from '@/common/debug';
 import { firebase, FIREBASE_TO_LANG } from '@/common/firebase';
+import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
 
 const debug = debugFactory('@/components/auth/AccountReset');
 
 export default {
+
   name: 'account-reset',
+
   data() {
     return {
       error: {},
@@ -15,19 +18,21 @@ export default {
       done: false,
     };
   },
+
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   methods: {
+
     next() {
       debug('next', this.$data);
 
-      this.$data.error = {};
+      this.$validator.reset();
 
-      if (!this.$data.email) {
-        const message = LANG.ERROR.Required;
-        this.$data.error.email = message;
-        this.$data.error.$message = this.$data.error.$message || message;
-      }
+      this.$validator.field('email').required();
 
-      if (this.$data.error.$message) {
+      if (this.$data.error.summary) {
         this.$refs.snackbar.open();
         return;
       }
@@ -39,23 +44,25 @@ export default {
       }, (error) => {
         debug.error(error, Object.assign({}, error));
 
-        this.$data.error = {};
+        this.$validator.reset();
 
         const code = FIREBASE_TO_LANG[error.code] || error.code;
         const message = LANG.ERROR[code] || error.message;
 
         if (code === 'InvalidEmail') {
-          this.$data.error.email = message;
+          this.$validator.field('email').error(message, false);
         }
 
         if (code === 'UserNotFound') {
-          this.$data.error.email = message;
+          this.$validator.field('email').error(message, false);
         }
 
-        this.$data.error.$message = this.$data.error.$message || error.message;
+        this.$validator.summary(error.message);
 
         this.$refs.snackbar.open();
       });
     },
+
   },
+
 };

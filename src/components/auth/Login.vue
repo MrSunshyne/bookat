@@ -6,11 +6,11 @@
 
     <form class="cs-flex-column" novalidate @submit.prevent="login">
 
-      <md-input-container :class="error.username ? 'md-input-invalid' : ''">
+      <md-input-container :class="error.email ? 'md-input-invalid' : ''">
         <md-icon>person</md-icon>
-        <label>Username</label>
-        <md-input required v-model="username" autofocus></md-input>
-        <span class="md-error">{{error.username}}</span>
+        <label>Email</label>
+        <md-input required v-model="email" autofocus></md-input>
+        <span class="md-error">{{error.email}}</span>
       </md-input-container>
 
       <md-input-container :class="error.password ? 'md-input-invalid' : ''">
@@ -19,6 +19,8 @@
         <md-input required type="password" v-model="password"></md-input>
         <span class="md-error">{{error.password}}</span>
       </md-input-container>
+
+      <md-button class="md-primary" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
 
       <md-button class="md-raised md-primary" type="submit">Login</md-button>
 
@@ -33,7 +35,7 @@
       </div>-->
 
       <md-snackbar ref="snackbar">
-        <span>{{error.$message}}</span>
+        <span>{{error.summary}}</span>
         <md-button class="md-accent" @click="$refs.snackbar.close()">Ok</md-button>
       </md-snackbar>
 
