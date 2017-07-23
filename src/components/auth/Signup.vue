@@ -80,6 +80,6 @@
   </div>
 </template>
 
-<script src="./Signup._.js"></script>
+<script src="./Signup.js"></script>
 
 <style scoped src="./common.css"></style>

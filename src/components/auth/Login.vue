@@ -79,7 +79,7 @@
   </div>
 </template>
 
-<script src="./Login._.js"></script>
+<script src="./Login.js"></script>
 
 <style scoped src="./common.css"></style>
 
