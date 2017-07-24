@@ -100,11 +100,11 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-router.afterEach((to /* , from*/) => {
+router.afterEach((to /* , from */) => {
   document.title = `bookAt | ${to.name}`;
 });
 
-router.afterEach((to /* , from*/) => {
+router.afterEach((to /* , from */) => {
   if (window.ga) {
     window.ga('send', 'event', 'View', to.path, to.name, to);
     window.ga('set', 'page', to.path);

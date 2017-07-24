@@ -2,7 +2,6 @@ import LANG from '@/common/lang';
 
 
 class FieldValidator {
-
   constructor($data, fieldName) {
     this.$data = $data;
     this.fieldName = fieldName;
@@ -30,7 +29,6 @@ class FieldValidator {
 }
 
 class Validator {
-
   CACHE = {};
 
   constructor($data) {

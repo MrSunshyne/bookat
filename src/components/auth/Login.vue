@@ -9,20 +9,20 @@
       <md-input-container :class="error.email ? 'md-input-invalid' : ''">
         <md-icon>person</md-icon>
         <label>Email</label>
-        <md-input required v-model="email" autofocus></md-input>
+        <md-input id="email_input" required v-model="email" autofocus></md-input>
         <span class="md-error">{{error.email}}</span>
       </md-input-container>
 
       <md-input-container :class="error.password ? 'md-input-invalid' : ''">
         <md-icon>lock</md-icon>
         <label>Password</label>
-        <md-input required type="password" v-model="password"></md-input>
+        <md-input id="password_input" required type="password" v-model="password"></md-input>
         <span class="md-error">{{error.password}}</span>
       </md-input-container>
 
       <md-button class="md-primary" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
 
-      <md-button class="md-raised md-primary" type="submit">Login</md-button>
+      <md-button id="submit" class="md-raised md-primary" type="submit">Login</md-button>
 
       <div class="cs-flex-row">
         <md-button class="md-raised md-google" @click="loginWithGoogle">Google</md-button>
@@ -43,11 +43,11 @@
 
     <div class="link-container">
 
-      <router-link tag="md-button" class="md-primary i-link-item" to="/reset">
+      <router-link id="reset" tag="md-button" class="md-primary i-link-item" to="/reset">
         Account Reset
       </router-link>
 
-      <router-link tag="md-button" class="md-primary link-item" style="flex: 1;" to="/signup">
+      <router-link id="signup" tag="md-button" class="md-primary link-item" style="flex: 1;" to="/signup">
         Signup
       </router-link>
 

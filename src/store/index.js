@@ -11,12 +11,16 @@ Vue.use(Vuex);
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
 const store = new Vuex.Store({
+
   plugins: [createPersistedState()],
+
   state: {
     token: null,
     user: null,
   },
+
   mutations: {
+
     login(state, {
       token,
       user,
@@ -24,11 +28,14 @@ const store = new Vuex.Store({
       state.token = token;
       state.user = user;
     },
+
     logout(state) {
       state.token = null;
       state.user = null;
     },
+
   },
+
   actions: {
 
     LOGIN(context, {
@@ -49,9 +56,11 @@ const store = new Vuex.Store({
     },
 
   },
+
   getters: {
     authenticated: state => !!state.token,
   },
+
 });
 
 export default store;

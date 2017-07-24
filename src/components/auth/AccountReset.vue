@@ -31,11 +31,11 @@
 
     <div class="link-container">
 
-      <router-link tag="md-button" class="md-primary link-item" to="/login">
+      <router-link id="login" tag="md-button" class="md-primary link-item" to="/login">
         Login
       </router-link>
 
-      <router-link tag="md-button" class="md-primary link-item" to="/signup">
+      <router-link id="signup" tag="md-button" class="md-primary link-item" to="/signup">
         Signup
       </router-link>
 

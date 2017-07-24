@@ -1,5 +1,6 @@
 import { debugFactory } from '@/common/debug';
-import { firebase, FIREBASE_TO_LANG, onAuthStateChanged } from '@/common/firebase';
+import { firebase, FIREBASE_TO_LANG } from '@/common/firebase';
+import { onAuthStateChanged } from '@/common/auth';
 import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
@@ -56,12 +57,12 @@ export default {
       };
 
       firebase.auth().createUserWithEmailAndPassword(
-          this.$data.email,
-          this.$data.password,
-        )
+        this.$data.email,
+        this.$data.password,
+      )
         .then(user => user.updateProfile(profile).then(() => user) /* resolves into void */)
         .then(user => user.sendEmailVerification().then(() => user) /* resolves into void */)
-        .then(user => onAuthStateChanged(user))
+        .then(user => onAuthStateChanged(user) /* 1st execution missing displayName, no effect */)
         .catch((error) => {
           debug.error(error, Object.assign({}, error));
           this.$validator.reset();

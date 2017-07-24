@@ -56,7 +56,7 @@
 
       <md-button class="md-primary" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
 
-      <md-button class="md-raised md-primary" type="submit">Signup</md-button>
+      <md-button id="submit" class="md-raised md-primary" type="submit">Signup</md-button>
 
       <md-snackbar ref="snackbar">
         <span>{{error.summary}}</span>
@@ -67,11 +67,11 @@
 
     <div class="link-container">
 
-      <router-link tag="md-button" class="md-primary link-item" to="/login">
+      <router-link id="login" tag="md-button" class="md-primary link-item" to="/login">
         Login
       </router-link>
 
-      <router-link tag="md-button" class="md-primary i-link-item" to="/reset">
+      <router-link id="reset" tag="md-button" class="md-primary i-link-item" to="/reset">
         Account Reset
       </router-link>
 

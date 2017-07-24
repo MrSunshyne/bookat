@@ -11,6 +11,7 @@ import router from '@/router';
 
 import '@/common/data';
 import '@/common/firebase';
+import '@/common/auth';
 
 Vue.use(VueMaterial);
 
