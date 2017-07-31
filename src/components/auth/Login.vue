@@ -20,7 +20,7 @@
         <span class="md-error">{{error.password}}</span>
       </md-input-container>
 
-      <md-button class="md-primary" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
+      <md-button class="md-primary" v-if="$store.getters.dev" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
 
       <md-button id="submit" class="md-raised md-primary" type="submit">Login</md-button>
 

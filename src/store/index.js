@@ -5,6 +5,7 @@ import createPersistedState from 'vuex-persistedstate';
 import router from '@/router';
 
 import { firebase } from '@/common/firebase';
+import { normalizeFirebaseUserProfile } from '@/common/auth';
 
 Vue.use(Vuex);
 
@@ -15,50 +16,59 @@ const store = new Vuex.Store({
   plugins: [createPersistedState()],
 
   state: {
-    token: null,
     user: null,
   },
 
   mutations: {
 
     login(state, {
-      token,
       user,
     }) {
-      state.token = token;
       state.user = user;
     },
 
     logout(state) {
-      state.token = null;
       state.user = null;
+    },
+
+    profile(state, {
+      user,
+    }) {
+      state.user = user;
     },
 
   },
 
   actions: {
 
-    LOGIN(context, {
-      token,
+    AUTH_LOGIN(context, {
       user,
     }) {
       context.commit('login', {
-        token,
         user,
       });
       router.push('/home');
     },
 
-    LOGOUT(context) {
+    AUTH_LOGOUT(context) {
       context.commit('logout');
       firebase.auth().signOut();
       router.push('/login');
     },
 
+    AUTH_RELOAD(context) {
+      firebase.auth().currentUser.reload().then(() => {
+        const user = normalizeFirebaseUserProfile(firebase.auth().currentUser);
+        context.commit('profile', {
+          user,
+        });
+      });
+    },
   },
 
   getters: {
-    authenticated: state => !!state.token,
+    dev: () => !!location.port,
+    authenticated: state => !!state.user,
   },
 
 });

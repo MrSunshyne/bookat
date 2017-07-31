@@ -13,11 +13,18 @@
 
 <script>
 export default {
+
   name: 'profile',
+
   data() {
     return {
     };
   },
+
+  created() {
+    this.$store.dispatch('AUTH_RELOAD');
+  },
+
 };
 </script>
 
