@@ -12,7 +12,7 @@ export const normalizeFirebaseUserProfile = user => ({
   email: user.email,
   emailVerified: user.emailVerified,
   phone: user.phoneNumber,
-  picture: user.photoURL || 'https://bookat.lab.nader.tn/static/img/user-picture.png',
+  picture: user.photoURL || 'https://bookat.lab.nader.tech/static/img/user-picture.png',
 });
 
 export const onAuthStateChanged = (user) => { /* eslint import/prefer-default-export: off */

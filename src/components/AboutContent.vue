@@ -22,7 +22,7 @@
         <md-icon class="md-primary">public</md-icon>
 
         <div class="md-list-text-container">
-          <a class="link" target="_blank" href="https://bookat.lab.nader.tn">https://bookat.lab.nader.tn</a>
+          <a class="link" target="_blank" href="https://bookat.lab.nader.tech">https://bookat.lab.nader.tech</a>
           <span>Website</span>
         </div>
       </md-list-item>
@@ -31,7 +31,7 @@
         <md-icon class="md-primary">email</md-icon>
 
         <div class="md-list-text-container">
-          <a class="link" target="_blank" href="mailto:contact@bookat.lab.nader.tn">contact@bookat.lab.nader.tn</a>
+          <a class="link" target="_blank" href="mailto:contact@bookat.lab.nader.tech">contact@bookat.lab.nader.tech</a>
           <span>Email</span>
         </div>
       </md-list-item>

@@ -53,7 +53,7 @@ export default {
 
       const profile = {
         displayName: this.$data.name,
-        photoURL: 'https://bookat.lab.nader.tn/static/img/user-picture.png',
+        photoURL: 'https://bookat.lab.nader.tech/static/img/user-picture.png',
       };
 
       firebase.auth().createUserWithEmailAndPassword(
@@ -129,7 +129,7 @@ export default {
 
     fillWithDemoAccount() {
       this.$data.name = 'Demo Account';
-      this.$data.email = 'demo@bookat.lab.nader.tn';
+      this.$data.email = 'demo@bookat.lab.nader.tech';
       this.$data.phone = '123456789';
       this.$data.password = 'demopass';
       this.$data.passwordConfirmation = 'demopass';
