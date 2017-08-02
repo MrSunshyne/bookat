@@ -16,7 +16,7 @@ export default {
       error: {},
       name: '',
       email: '',
-      phone: '',
+      phoneNumber: '',
       password: '',
       passwordConfirmation: '',
     };
@@ -29,13 +29,13 @@ export default {
   methods: {
 
     signup() {
-      debug('signup');
+      debug('signup', this.$data);
 
       this.$validator.reset();
 
       this.$validator.field('name').required();
       this.$validator.field('email').required();
-      this.$validator.field('phone').required();
+      this.$validator.field('phoneNumber').required();
       this.$validator.field('password').required();
       this.$validator.field('passwordConfirmation').required();
 
@@ -56,11 +56,16 @@ export default {
         photoURL: 'https://bookat.lab.nader.tech/static/img/user-picture.png',
       };
 
+      const profileExtension = {
+        phoneNumber: this.$data.phoneNumber || null,
+      };
+
       firebase.auth().createUserWithEmailAndPassword(
         this.$data.email,
         this.$data.password,
       )
         .then(user => user.updateProfile(profile).then(() => user) /* resolves into void */)
+        .then(user => firebase.database().ref(`/user/${user.uid}`).set(profileExtension).then(() => user))
         .then(user => user.sendEmailVerification().then(() => user) /* resolves into void */)
         .then(user => onAuthStateChanged(user) /* 1st execution missing displayName, no effect */)
         .catch((error) => {
@@ -130,7 +135,7 @@ export default {
     fillWithDemoAccount() {
       this.$data.name = 'Demo Account';
       this.$data.email = 'demo@bookat.lab.nader.tech';
-      this.$data.phone = '123456789';
+      this.$data.phoneNumber = '123456789';
       this.$data.password = 'demopass';
       this.$data.passwordConfirmation = 'demopass';
     },

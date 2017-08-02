@@ -4,7 +4,7 @@
     <ul>
       <li>name: {{$store.state.user.name}}</li>
       <li>email: {{$store.state.user.email}}</li>
-      <li>phone: {{$store.state.user.phone}}</li>
+      <li>phoneNumber: {{$store.state.user.phoneNumber}}</li>
       <li>picture: {{$store.state.user.picture}}</li>
     </ul>
 
@@ -22,7 +22,7 @@ export default {
   },
 
   created() {
-    this.$store.dispatch('AUTH_RELOAD');
+    this.$store.dispatch('AUTH_REFRESH');
   },
 
 };

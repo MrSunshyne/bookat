@@ -36,7 +36,7 @@
             <div class="md-list-text-container">
               <span>{{$store.state.user.name}}</span>
               <span>{{$store.state.user.email}}</span>
-              <span>{{$store.state.user.phone}}</span>
+              <span>{{$store.state.user.phoneNumber}}</span>
             </div>
           </md-list-item>
         </md-list>

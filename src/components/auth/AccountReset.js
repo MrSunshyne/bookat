@@ -37,9 +37,7 @@ export default {
         return;
       }
 
-      firebase.auth().sendPasswordResetEmail(this.$data.email).then((...args) => {
-        // Email sent.
-        debug(...args);
+      firebase.auth().sendPasswordResetEmail(this.$data.email).then(() => {
         this.$data.done = true;
       }, (error) => {
         debug.error(error, Object.assign({}, error));

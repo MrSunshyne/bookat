@@ -1,3 +1,5 @@
+// import { debugFactory } from '@/common/debug';
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
@@ -5,7 +7,9 @@ import createPersistedState from 'vuex-persistedstate';
 import router from '@/router';
 
 import { firebase } from '@/common/firebase';
-import { normalizeFirebaseUserProfile } from '@/common/auth';
+import { getCurrentUserFromFirebase } from '@/common/auth';
+
+// const debug = debugFactory('@/components/auth/Login');
 
 Vue.use(Vuex);
 
@@ -41,13 +45,13 @@ const store = new Vuex.Store({
 
   actions: {
 
-    AUTH_LOGIN(context, {
-      user,
-    }) {
-      context.commit('login', {
-        user,
+    AUTH_LOGIN(context) {
+      getCurrentUserFromFirebase().then((user) => {
+        context.commit('login', {
+          user,
+        });
+        router.push('/home');
       });
-      router.push('/home');
     },
 
     AUTH_LOGOUT(context) {
@@ -56,13 +60,18 @@ const store = new Vuex.Store({
       router.push('/login');
     },
 
-    AUTH_RELOAD(context) {
-      firebase.auth().currentUser.reload().then(() => {
-        const user = normalizeFirebaseUserProfile(firebase.auth().currentUser);
-        context.commit('profile', {
-          user,
+    AUTH_REFRESH(context) {
+      const currentUser = firebase.auth().currentUser;
+      if (!currentUser) {
+        return;
+      }
+      currentUser.reload()
+        .then(getCurrentUserFromFirebase)
+        .then((user) => {
+          context.commit('profile', {
+            user,
+          });
         });
-      });
     },
   },
 

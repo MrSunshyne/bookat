@@ -6,31 +6,44 @@ import store from '@/store';
 
 const debug = debugFactory('@/common/firebase');
 
-export const normalizeFirebaseUserProfile = user => ({
-  id: user.uid,
+export const normalizeUserFromFirebase = user => ({
+  uid: user.uid,
   name: user.displayName,
   email: user.email,
   emailVerified: user.emailVerified,
-  phone: user.phoneNumber,
+  phoneNumber: user.phoneNumber,
   picture: user.photoURL || 'https://bookat.lab.nader.tech/static/img/user-picture.png',
 });
 
-export const onAuthStateChanged = (user) => { /* eslint import/prefer-default-export: off */
-  debug('user', user);
+export const getCurrentUserFromFirebase = () => {
+  const currentUser = firebase.auth().currentUser;
+  const user = normalizeUserFromFirebase(currentUser);
 
-  if (user && user.displayName) {
+  return firebase.database().ref(`/user/${user.uid}`).once('value').then((snapshot) => {
+    const profileExtension = snapshot.val() || {};
+    Object.assign(user, profileExtension);
+    return user;
+  });
+};
+
+export const onAuthStateChanged = (currentUser) => { /* eslint import/prefer-default-export: off */
+  debug('currentUser', currentUser);
+
+  if (currentUser && currentUser.displayName) {
     // User is signed in.
 
-    store.dispatch('AUTH_LOGIN', {
-      user: normalizeFirebaseUserProfile(user),
-    });
+    if (store.getters.authenticated) {
+      store.dispatch('AUTH_REFRESH');
+    } else {
+      store.dispatch('AUTH_LOGIN');
+    }
   } else {
     // User is signed out.
 
     // ...
   }
 
-  return user;
+  return currentUser;
 };
 
 firebase.auth().onAuthStateChanged(onAuthStateChanged);

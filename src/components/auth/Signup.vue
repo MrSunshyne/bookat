@@ -23,11 +23,11 @@
         <span class="md-error">{{error.email}}</span>
       </md-input-container>
 
-      <md-input-container :class="error.phone ? 'md-input-invalid' : ''">
+      <md-input-container :class="error.phoneNumber ? 'md-input-invalid' : ''">
         <md-icon>phone</md-icon>
         <label>Phone</label>
-        <md-input required v-model="phone"></md-input>
-        <span class="md-error">{{error.phone}}</span>
+        <md-input required v-model="phoneNumber"></md-input>
+        <span class="md-error">{{error.phoneNumber}}</span>
       </md-input-container>
 
       <md-input-container :class="error.password ? 'md-input-invalid' : ''">

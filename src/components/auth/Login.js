@@ -31,7 +31,7 @@ export default {
   methods: {
 
     login() {
-      debug('login');
+      debug('login', this.$data);
 
       this.$validator.reset();
 
