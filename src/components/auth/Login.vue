@@ -1,7 +1,7 @@
 <template>
   <div class="cs-view">
     <div class="cs-text-center">
-      <img src="../../assets/logo.png" alt="bookAt" class="logo">
+      <img src="../../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
     <form class="cs-flex-column" novalidate @submit.prevent="login">
@@ -67,7 +67,7 @@
 
     </div>
 
-    <!--<md-dialog md-open-from="#aboutButton" md-close-to="#aboutButton" ref="aboutDialog" md-title="About bookAt">
+    <!--<md-dialog md-open-from="#aboutButton" md-close-to="#aboutButton" ref="aboutDialog" md-title="About BOOKAT">
       <md-dialog-title>Create new note</md-dialog-title>
 
       <md-dialog-content>

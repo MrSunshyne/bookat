@@ -2,10 +2,10 @@
   <div class="cs-view cs-view-content">
 
     <div class="cs-text-center">
-      <img src="../assets/logo.png" alt="bookAt" class="logo">
+      <img src="../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
-    <div class="md-title cs-text-center" v-if="!$store.getters.authenticated">About bookAt</div>
+    <div class="md-title cs-text-center" v-if="!$store.getters.authenticated">About BOOKAT</div>
 
     <about-content></about-content>
 

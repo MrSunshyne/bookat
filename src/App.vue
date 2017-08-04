@@ -7,7 +7,7 @@
           <md-icon>menu</md-icon>
         </md-button>
 
-        <h2 class="md-title" style="flex: 1">bookAt | {{$route.name}}</h2>
+        <h2 class="md-title" style="flex: 1">BOOKAT | {{$route.name}}</h2>
 
         <router-view name="toolbar"></router-view>
 

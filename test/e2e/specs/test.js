@@ -12,8 +12,8 @@ module.exports = {
       .url(devServer)
       .waitForElementVisible('#app', 5000)
       .assert.urlContains('#/login')
-      .assert.title('bookAt | Login')
-      .assert.elementPresent('img[alt="bookAt"]')
+      .assert.title('BOOKAT | Login')
+      .assert.elementPresent('img[alt="BOOKAT"]')
       .assert.elementPresent('#email_input')
       .assert.elementPresent('#password_input')
       .assert.elementPresent('#submit')
@@ -26,13 +26,13 @@ module.exports = {
     browser
       .url(devServer)
       .waitForElementVisible('#app', 5000)
-      .assert.urlContains('#/login').assert.title('bookAt | Login')
-      .click('#signup').assert.urlContains('#/signup').assert.title('bookAt | Signup')
-      .click('#login').assert.urlContains('#/login').assert.title('bookAt | Login')
-      .click('#reset').assert.urlContains('#/reset').assert.title('bookAt | Account Reset')
-      .click('#login').assert.urlContains('#/login').assert.title('bookAt | Login')
-      .click('#signup').assert.urlContains('#/signup').assert.title('bookAt | Signup')
-      .click('#reset').assert.urlContains('#/reset').assert.title('bookAt | Account Reset')
+      .assert.urlContains('#/login').assert.title('BOOKAT | Login')
+      .click('#signup').assert.urlContains('#/signup').assert.title('BOOKAT | Signup')
+      .click('#login').assert.urlContains('#/login').assert.title('BOOKAT | Login')
+      .click('#reset').assert.urlContains('#/reset').assert.title('BOOKAT | Account Reset')
+      .click('#login').assert.urlContains('#/login').assert.title('BOOKAT | Login')
+      .click('#signup').assert.urlContains('#/signup').assert.title('BOOKAT | Signup')
+      .click('#reset').assert.urlContains('#/reset').assert.title('BOOKAT | Account Reset')
 
       .end();
   },
