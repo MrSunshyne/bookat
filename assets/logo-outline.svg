@@ -1,18 +1,19 @@
 <svg width="125" height="125" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<title>logo-alt-outline</title>
+<title>logo-outline</title>
 <desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(-150 -150)">
-<g id="logo-alt-outline">
+<g id="Canvas" transform="translate(-150 0)">
+<g id="logo-outline">
+<path d="M 150 0L 275 0L 275 125L 150 125L 150 0Z" fill="#EEEEEE"/>
 <g id="Rectangle">
 <mask id="mask0_outline_ins">
-<use xlink:href="#path0_fill" fill="white" transform="translate(150 150)"/>
+<use xlink:href="#path0_fill" fill="white" transform="translate(150 0)"/>
 </mask>
 <g mask="url(#mask0_outline_ins)">
-<use xlink:href="#path1_stroke_2x" transform="translate(150 150)" fill="#6C6A81"/>
+<use xlink:href="#path1_stroke_2x" transform="translate(150 0)" fill="#6C6A81"/>
 </g>
 </g>
 <g id="BOOKAT">
-<use xlink:href="#path2_fill" transform="translate(150 150)" fill="#6C6A81"/>
+<use xlink:href="#path2_fill" transform="translate(150 0)" fill="#6C6A81"/>
 </g>
 </g>
 </g>

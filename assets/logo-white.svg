@@ -1,11 +1,11 @@
 <svg width="125" height="125" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<title>logo</title>
+<title>logo-white</title>
 <desc>Created using Figma</desc>
-<g id="Canvas">
-<g id="logo">
-<path d="M 0 0L 125 0L 125 125L 0 125L 0 0Z" fill="#EEEEEE"/>
+<g id="Canvas" transform="translate(0 -300)">
+<g id="logo-white">
+<path d="M 0 300L 125 300L 125 425L 0 425L 0 300Z" fill="#FFFFFF"/>
 <g id="BOOKAT">
-<use xlink:href="#path0_fill" transform="translate(0 7.10543e-15)" fill="#6C6A81"/>
+<use xlink:href="#path0_fill" transform="translate(0 300)" fill="#6C6A81"/>
 </g>
 </g>
 </g>
