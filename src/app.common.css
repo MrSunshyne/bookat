@@ -108,3 +108,7 @@ form .md-input-container {
 .fade-leave-active {
   display: none;
 }
+
+.md-title {
+  font-weight: 300;
+}
