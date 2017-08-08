@@ -1,4 +1,4 @@
-sudo: required
+sudo: enabled
 dist: trusty
 addons:
   apt:
@@ -15,5 +15,9 @@ cache:
     - "node_modules"
 install:
     - npm install
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 script:
     - npm run e2e
