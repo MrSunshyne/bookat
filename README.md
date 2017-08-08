@@ -1,6 +1,8 @@
 # bookat
 
-> A Vue.js project
+> An experimental service booking side project built as PWA with Firebase, Vue.js, Vuex, vue-router, Firebase, ...
+
+[![Build Status](https://travis-ci.org/naderio/bookat.svg?branch=master)](https://travis-ci.org/naderio/bookat)
 
 ## Build Setup
 
