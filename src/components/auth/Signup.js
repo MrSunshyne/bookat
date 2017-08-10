@@ -134,7 +134,7 @@ export default {
 
     fillWithDemoAccount() {
       this.$data.name = 'Demo Account';
-      this.$data.email = 'demo@bookat.lab.nader.tech';
+      this.$data.email = 'demo@lab.nader.tech';
       this.$data.phoneNumber = '123456789';
       this.$data.password = 'demopass';
       this.$data.passwordConfirmation = 'demopass';

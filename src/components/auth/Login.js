@@ -111,7 +111,7 @@ export default {
     },
 
     fillWithDemoAccount() {
-      this.$data.email = 'demo@bookat.lab.nader.tech';
+      this.$data.email = 'demo@lab.nader.tech';
       this.$data.password = 'demopass';
     },
 
