@@ -16,7 +16,10 @@ import '@/common/auth';
 Vue.use(VueMaterial);
 
 Vue.material.registerTheme('default', {
-  primary: 'blue-grey',
+  primary: {
+    color: 'blue-grey',
+    hue: 800,
+  },
   accent: 'deep-orange',
   warn: 'red',
 });

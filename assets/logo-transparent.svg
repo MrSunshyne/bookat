@@ -2,9 +2,11 @@
 <title>logo-transparent</title>
 <desc>Created using Figma</desc>
 <g id="Canvas" transform="translate(0 -150)">
+<g id="bookat">
 <g id="logo-transparent">
-<g id="BOOKAT">
+<g id="Text">
 <use xlink:href="#path0_fill" transform="translate(0 150)" fill="#6C6A81"/>
+</g>
 </g>
 </g>
 </g>

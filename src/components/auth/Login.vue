@@ -43,11 +43,11 @@
 
     <div class="link-container">
 
-      <router-link id="reset" tag="md-button" class="md-primary i-link-item" to="/reset">
+      <router-link id="reset" tag="md-button" class="md-primary link-item" to="/reset">
         Account Reset
       </router-link>
 
-      <router-link id="signup" tag="md-button" class="md-primary link-item" style="flex: 1;" to="/signup">
+      <router-link id="signup" tag="md-button" class="md-primary link-item" to="/signup">
         Signup
       </router-link>
 

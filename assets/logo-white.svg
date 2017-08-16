@@ -2,10 +2,12 @@
 <title>logo-white</title>
 <desc>Created using Figma</desc>
 <g id="Canvas" transform="translate(0 -300)">
+<g id="bookat">
 <g id="logo-white">
 <path d="M 0 300L 125 300L 125 425L 0 425L 0 300Z" fill="#FFFFFF"/>
-<g id="BOOKAT">
+<g id="Text">
 <use xlink:href="#path0_fill" transform="translate(0 300)" fill="#6C6A81"/>
+</g>
 </g>
 </g>
 </g>

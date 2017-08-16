@@ -71,7 +71,7 @@
         Login
       </router-link>
 
-      <router-link id="reset" tag="md-button" class="md-primary i-link-item" to="/reset">
+      <router-link id="reset" tag="md-button" class="md-primary link-item" to="/reset">
         Account Reset
       </router-link>
 

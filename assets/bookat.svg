@@ -1,20 +1,64 @@
-<svg width="125" height="125" viewBox="0 0 125 125" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<title>logo-outline</title>
+<svg width="275" height="425" viewBox="0 0 275 425" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>bookat</title>
 <desc>Created using Figma</desc>
-<g id="Canvas" transform="translate(-150 0)">
+<g id="Canvas">
 <g id="bookat">
+<g id="logo-white-outline">
+<path d="M 150 300L 275 300L 275 425L 150 425L 150 300Z" fill="#FFFFFF"/>
+<g id="Rectangle">
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(150 300)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(150 300)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="Text">
+<use xlink:href="#path2_fill" transform="translate(150 300)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="logo-white">
+<path d="M 0 300L 125 300L 125 425L 0 425L 0 300Z" fill="#FFFFFF"/>
+<g id="Text">
+<use xlink:href="#path2_fill" transform="translate(0 300)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="logo-transparent-outline">
+<g id="Rectangle">
+<mask id="mask1_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(150 150)"/>
+</mask>
+<g mask="url(#mask1_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(150 150)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="Text">
+<use xlink:href="#path2_fill" transform="translate(150 150)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="logo-transparent">
+<g id="Text">
+<use xlink:href="#path2_fill" transform="translate(0 150)" fill="#6C6A81"/>
+</g>
+</g>
 <g id="logo-outline">
 <path d="M 150 0L 275 0L 275 125L 150 125L 150 0Z" fill="#EEEEEE"/>
 <g id="Rectangle">
-<mask id="mask0_outline_ins">
+<mask id="mask2_outline_ins">
 <use xlink:href="#path0_fill" fill="white" transform="translate(150 0)"/>
 </mask>
-<g mask="url(#mask0_outline_ins)">
+<g mask="url(#mask2_outline_ins)">
 <use xlink:href="#path1_stroke_2x" transform="translate(150 0)" fill="#6C6A81"/>
 </g>
 </g>
 <g id="Text">
 <use xlink:href="#path2_fill" transform="translate(150 0)" fill="#6C6A81"/>
+</g>
+</g>
+<g id="logo">
+<path d="M 0 0L 125 0L 125 125L 0 125L 0 0Z" fill="#EEEEEE"/>
+<g id="Text">
+<use xlink:href="#path2_fill" transform="translate(0 7.10543e-15)" fill="#6C6A81"/>
 </g>
 </g>
 </g>

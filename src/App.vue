@@ -33,10 +33,10 @@
           </md-list-item>
 
           <md-list-item>
-            <div class="md-list-text-container">
+            <div class="md-list-text-container" style="color: white;">
               <span>{{$store.state.user.name}}</span>
-              <span>{{$store.state.user.email}}</span>
-              <span>{{$store.state.user.phoneNumber}}</span>
+              <span style="color: white;">{{$store.state.user.email}}</span>
+              <span style="color: white;">{{$store.state.user.phoneNumber}}</span>
             </div>
           </md-list-item>
         </md-list>
@@ -76,7 +76,7 @@
   </div>
 </template>
 
-<script src="./app.js"></script>
+<script src="./App.js"></script>
 
-<style src="./app.common.css"></style>
-<style src="./app.css"></style>
+<style src="./App.common.css"></style>
+<style src="./App.css"></style>

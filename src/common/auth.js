@@ -12,7 +12,7 @@ export const normalizeUserFromFirebase = user => ({
   email: user.email,
   emailVerified: user.emailVerified,
   phoneNumber: user.phoneNumber,
-  picture: user.photoURL || 'https://bookat.lab.nader.tech/static/img/user-picture.png',
+  picture: user.photoURL || '/static/img/user-picture.png',
 });
 
 export const getCurrentUserFromFirebase = () => {

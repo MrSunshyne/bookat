@@ -2,6 +2,7 @@
 <title>logo-transparent-outline</title>
 <desc>Created using Figma</desc>
 <g id="Canvas" transform="translate(-150 -150)">
+<g id="bookat">
 <g id="logo-transparent-outline">
 <g id="Rectangle">
 <mask id="mask0_outline_ins">
@@ -11,8 +12,9 @@
 <use xlink:href="#path1_stroke_2x" transform="translate(150 150)" fill="#6C6A81"/>
 </g>
 </g>
-<g id="BOOKAT">
+<g id="Text">
 <use xlink:href="#path2_fill" transform="translate(150 150)" fill="#6C6A81"/>
+</g>
 </g>
 </g>
 </g>
