@@ -12,7 +12,6 @@ import App from '@/App';
 import store from '@/store';
 import router from '@/router';
 
-import '@/common/data';
 import '@/common/firebase';
 import '@/common/auth';
 

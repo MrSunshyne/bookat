@@ -2,10 +2,10 @@
   <div class="cs-view cs-view-content">
 
     <ul>
-      <li>name: {{$store.state.user.name}}</li>
-      <li>email: {{$store.state.user.email}}</li>
-      <li>phoneNumber: {{$store.state.user.phoneNumber}}</li>
-      <li>picture: {{$store.state.user.picture}}</li>
+      <li>name: {{user.name}}</li>
+      <li>email: {{user.email}}</li>
+      <li>phoneNumber: {{user.phoneNumber}}</li>
+      <li>picture: {{user.picture}}</li>
     </ul>
 
   </div>
@@ -19,6 +19,12 @@ export default {
   data() {
     return {
     };
+  },
+
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
   },
 
   created() {

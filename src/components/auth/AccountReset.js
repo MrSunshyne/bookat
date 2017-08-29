@@ -11,16 +11,16 @@ export default {
 
   name: 'account-reset',
 
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   data() {
     return {
       error: {},
       email: '',
       done: false,
     };
-  },
-
-  beforeMount() {
-    this.$validator = validator(this.$data);
   },
 
   methods: {

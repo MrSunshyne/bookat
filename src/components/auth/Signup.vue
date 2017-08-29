@@ -54,7 +54,7 @@
         <md-button class="md-facebook" @click="loginWithFacebook">login with Facebook</md-button>
       </div>-->
 
-      <md-button class="md-primary" v-if="$store.getters.dev" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
+      <md-button class="md-primary" v-if="!$store.getters.production" @click="fillWithDemoAccount">Fill with Demo Data</md-button>
 
       <md-button id="submit" class="md-raised md-primary" type="submit">Signup</md-button>
 

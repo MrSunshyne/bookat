@@ -16,16 +16,16 @@ export default {
     AboutContent,
   },
 
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   data() {
     return {
       error: {},
       email: '',
       password: '',
     };
-  },
-
-  beforeMount() {
-    this.$validator = validator(this.$data);
   },
 
   methods: {

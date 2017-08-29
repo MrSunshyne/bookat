@@ -11,6 +11,10 @@ export default {
 
   name: 'signup',
 
+  beforeMount() {
+    this.$validator = validator(this.$data);
+  },
+
   data() {
     return {
       error: {},
@@ -20,10 +24,6 @@ export default {
       password: '',
       passwordConfirmation: '',
     };
-  },
-
-  beforeMount() {
-    this.$validator = validator(this.$data);
   },
 
   methods: {

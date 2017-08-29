@@ -76,7 +76,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    dev: () => !!location.port,
+    production: () => !location.port,
     authenticated: state => !!state.user,
   },
 

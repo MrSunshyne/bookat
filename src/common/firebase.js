@@ -7,6 +7,8 @@ import 'firebase/database';
 
 // const debug = debugFactory('@/common/firebase');
 
+global.firebase = firebase;
+
 const config = {
   apiKey: 'AIzaSyBXzp0H4Cvi01jRkrjFwyJPI8z3N5dOTG0',
   authDomain: 'bookat-5e039.firebaseapp.com',

@@ -24,6 +24,7 @@ export default {
     },
 
   },
+
   created() {
     this.$router.afterEach(this.onRouteChanged);
   },
