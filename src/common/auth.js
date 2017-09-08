@@ -16,7 +16,7 @@ export const normalizeUserFromFirebase = user => ({
 });
 
 export const getCurrentUserFromFirebase = () => {
-  const currentUser = firebase.auth().currentUser;
+  const { currentUser } = firebase.auth();
   const user = normalizeUserFromFirebase(currentUser);
 
   return firebase.database().ref(`/user/${user.uid}`).once('value').then((snapshot) => {

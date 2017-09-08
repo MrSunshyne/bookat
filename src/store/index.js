@@ -61,7 +61,7 @@ const store = new Vuex.Store({
     },
 
     AUTH_REFRESH(context) {
-      const currentUser = firebase.auth().currentUser;
+      const { currentUser } = firebase.auth();
       if (!currentUser) {
         return;
       }
@@ -76,7 +76,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    production: () => !location.port,
+    production: () => !window.location.port,
     authenticated: state => !!state.user,
   },
 
