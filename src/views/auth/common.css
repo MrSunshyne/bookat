@@ -1,0 +1,25 @@
+.logo {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  height: 96px;
+}
+
+.link-container {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.link-container .link-item {
+  flex: 1;
+}
+
+.btn-facebook {
+  background-color: #3B5998;
+  color: #FFFFFF;
+}
+
+.btn-google {
+  background-color: #DD4B39;
+  color: #FFFFFF;
+}

@@ -6,11 +6,11 @@ import LANG from '@/common/lang';
 
 import AboutContent from '../AboutContent';
 
-const debug = debugFactory('@/components/auth/Login');
+const debug = debugFactory('@/views/auth/Login');
 
 export default {
 
-  name: 'login',
+  name: 'Login',
 
   components: {
     AboutContent,
@@ -39,7 +39,7 @@ export default {
       this.$validator.field('password').required();
 
       if (this.$data.error.summary) {
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
         return;
       }
 
@@ -68,7 +68,7 @@ export default {
 
         this.$validator.summary(error.message);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
     },
 
@@ -87,7 +87,7 @@ export default {
 
         this.$validator.summary(error.message, true);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
     },
 
@@ -106,11 +106,11 @@ export default {
 
         this.$validator.summary(error.message, true);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
     },
 
-    fillWithDemoAccount() {
+    fillWithDemoData() {
       this.$data.email = 'demo@lab.nader.tech';
       this.$data.password = 'demopass';
     },

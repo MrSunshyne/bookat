@@ -1,31 +1,53 @@
 export default {
-  name: 'app',
+
+  name: 'App',
+
+  data() {
+    return {
+      navigationDrawer: null,
+      navigationMenuItems: [
+        {
+          title: 'Home',
+          icon: 'move_to_inbox',
+          route: '/home',
+        },
+        {
+          title: 'My Services',
+          icon: 'star',
+          route: '/services',
+        },
+        {
+          title: 'Profile',
+          icon: 'person',
+          route: '/profile',
+        },
+        {
+          title: 'About',
+          icon: 'info_outline',
+          route: '/about',
+        },
+      ],
+      sideviewDrawer: null,
+    };
+  },
+
+  beforeMount() {
+    if (process.env.NODE_ENV === 'development') {
+      this.$data.navigationMenuItems.push({
+        title: 'Sample',
+        icon: 'code',
+        route: '/sample',
+      });
+    }
+  },
+
   methods: {
 
-    openNavigation() {
-      if (!this.$refs.navigation) {
-        return;
-      }
-      this.$refs.navigation.open();
-    },
-
-    onRouteChanged() {
-      if (this.$refs.navigation) {
-        this.$refs.navigation.close();
-      }
-
-      if (this.$refs.main) {
-        this.$refs.main.scrollTop = 0;
-      }
-    },
-
     logout() {
-      this.$store.dispatch('AUTH_LOGOUT');
+      this.$store.dispatch('logout');
     },
 
   },
 
-  created() {
-    this.$router.afterEach(this.onRouteChanged);
-  },
+
 };

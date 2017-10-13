@@ -33,9 +33,9 @@ export const onAuthStateChanged = (currentUser) => { /* eslint import/prefer-def
     // User is signed in.
 
     if (store.getters.authenticated) {
-      store.dispatch('AUTH_REFRESH');
+      store.dispatch('reloadProfile');
     } else {
-      store.dispatch('AUTH_LOGIN');
+      store.dispatch('login');
     }
   } else {
     // User is signed out.

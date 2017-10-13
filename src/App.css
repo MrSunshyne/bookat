@@ -1,3 +1,117 @@
+html {
+  overflow: auto;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(182, 189, 195, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(182, 189, 195, 0.3);
+  background-color: rgba(#F5F5F5, 0.6);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* border-radius: 6px; */
+  box-shadow: inset 0 0 6px rgba(182, 189, 195, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(182, 189, 195, 0.3);
+  background-color: #555;
+}
+
+#app {}
+
+.-x-relative {
+  position: relative;
+}
+
+.-x-fit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.-x-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.-x-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.-x-flex-row>*,
+.-x-flex-column>* {
+  flex: 1;
+}
+
+.-x-flex-cell {
+  flex: 1;
+}
+
+.c-text-center {
+  text-align: center;
+}
+
+.-x-view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.-x-view-container-at-auth {
+  background: rgba(237, 237, 237, 1);
+  background: linear-gradient(to bottom, rgba(237, 237, 237, 1) 0%, rgba(246, 246, 246, 1) 53%, rgba(255, 255, 255, 1) 100%);
+}
+
+.-x-view {
+  margin: auto;
+  min-width: 100%;
+}
+
+@media (min-width: 400px) {
+  .-x-view {
+    min-width: 300px;
+  }
+}
+
+.-x-view-content {
+  padding: 16px;
+  max-width: 400px;
+}
+
+.-x-view-align-top {
+  align-self: center;
+}
+
+.fade-enter-active {
+  display: block;
+  transition: opacity .5s ease;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+.fade-leave-active {
+  display: none;
+}
+
+form {
+  margin: 8px;
+}
+
+.c-logo {
+  height: 32px;
+}
 
 #state-progress {
   position: absolute;

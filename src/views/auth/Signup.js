@@ -5,11 +5,11 @@ import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
 
-const debug = debugFactory('@/components/auth/Signup');
+const debug = debugFactory('@/views/auth/Signup');
 
 export default {
 
-  name: 'signup',
+  name: 'Signup',
 
   beforeMount() {
     this.$validator = validator(this.$data);
@@ -47,7 +47,7 @@ export default {
       }
 
       if (this.$data.error.summary) {
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
         return;
       }
 
@@ -90,7 +90,7 @@ export default {
 
           this.$validator.summary(error.message);
 
-          this.$refs.snackbar.open();
+          this.$refs.snackbar.show(this.$data.error.summary);
         });
     },
 
@@ -109,7 +109,7 @@ export default {
 
         this.$validator.summary(error.message, true);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
     },
 
@@ -128,11 +128,11 @@ export default {
 
         this.$validator.summary(error.message, true);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
     },
 
-    fillWithDemoAccount() {
+    fillWithDemoData() {
       this.$data.name = 'Demo Account';
       this.$data.email = 'demo@lab.nader.tech';
       this.$data.phoneNumber = '123456789';

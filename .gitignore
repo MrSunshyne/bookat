@@ -1,5 +1,6 @@
 .DS_Store
 *.log
+*DRAFT*
 node_modules/
 dist/
 test/unit/coverage

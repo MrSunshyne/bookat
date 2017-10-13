@@ -9,7 +9,7 @@ import router from '@/router';
 import { firebase } from '@/common/firebase';
 import { getCurrentUserFromFirebase } from '@/common/auth';
 
-// const debug = debugFactory('@/components/auth/Login');
+// const debug = debugFactory('@/views/auth/Login');
 
 Vue.use(Vuex);
 
@@ -20,22 +20,31 @@ const store = new Vuex.Store({
   plugins: [createPersistedState()],
 
   state: {
+    loading: false,
     user: null,
+    availableServices: [],
+    myServices: [],
   },
 
   mutations: {
 
-    login(state, {
+    LOADING(state, {
+      loading,
+    }) {
+      state.loading = loading;
+    },
+
+    LOGIN(state, {
       user,
     }) {
       state.user = user;
     },
 
-    logout(state) {
+    LOGOUT(state) {
       state.user = null;
     },
 
-    profile(state, {
+    PROFILE(state, {
       user,
     }) {
       state.user = user;
@@ -45,22 +54,22 @@ const store = new Vuex.Store({
 
   actions: {
 
-    AUTH_LOGIN(context) {
+    login(context) {
       getCurrentUserFromFirebase().then((user) => {
-        context.commit('login', {
+        context.commit('LOGIN', {
           user,
         });
         router.push('/home');
       });
     },
 
-    AUTH_LOGOUT(context) {
-      context.commit('logout');
+    logout(context) {
+      context.commit('LOGOUT');
       firebase.auth().signOut();
       router.push('/login');
     },
 
-    AUTH_REFRESH(context) {
+    reloadProfile(context) {
       const { currentUser } = firebase.auth();
       if (!currentUser) {
         return;
@@ -68,7 +77,7 @@ const store = new Vuex.Store({
       currentUser.reload()
         .then(getCurrentUserFromFirebase)
         .then((user) => {
-          context.commit('profile', {
+          context.commit('PROFILE', {
             user,
           });
         });
@@ -76,7 +85,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    production: () => !window.location.port,
+    development: () => process.env.NODE_ENV === 'development',
     authenticated: state => !!state.user,
   },
 

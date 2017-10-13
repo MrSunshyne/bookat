@@ -5,7 +5,7 @@ import validator from '@/common/validator';
 
 import LANG from '@/common/lang';
 
-const debug = debugFactory('@/components/auth/AccountReset');
+const debug = debugFactory('@/views/auth/AccountReset');
 
 export default {
 
@@ -33,7 +33,7 @@ export default {
       this.$validator.field('email').required();
 
       if (this.$data.error.summary) {
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
         return;
       }
 
@@ -57,8 +57,12 @@ export default {
 
         this.$validator.summary(error.message);
 
-        this.$refs.snackbar.open();
+        this.$refs.snackbar.show(this.$data.error.summary);
       });
+    },
+
+    fillWithDemoData() {
+      this.$data.email = 'demo@lab.nader.tech';
     },
 
   },

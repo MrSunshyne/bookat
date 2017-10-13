@@ -1,6 +1,6 @@
 <template>
-  <div class="cs-view">
-    <div class="cs-text-center">
+  <div class="-x-view">
+    <div class="c-text-center">
       <img src="../assets/logo.png" alt="BOOKAT">
       <h1>{{ msg }}</h1>
     </div>
@@ -10,7 +10,7 @@
 <script>
 export default {
 
-  name: 'home',
+  name: 'Home',
 
   data() {
     return {

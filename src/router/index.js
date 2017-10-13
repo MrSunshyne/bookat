@@ -3,19 +3,26 @@ import Router from 'vue-router';
 
 import store from '@/store';
 
-import Signup from '@/components/auth/Signup';
-import Login from '@/components/auth/Login';
-import AccountReset from '@/components/auth/AccountReset';
+import Sample from '@/views/Sample';
+import Signup from '@/views/auth/Signup';
+import Login from '@/views/auth/Login';
+import AccountReset from '@/views/auth/AccountReset';
 
-import About from '@/components/About';
+import About from '@/views/About';
 
-import Home from '@/components/Home';
-import Profile from '@/components/Profile';
+import Home from '@/views/Home';
+import ServiceIndex from '@/views/ServiceIndex';
+import Profile from '@/views/Profile';
 
 Vue.use(Router);
 
 const router = new Router({
   routes: [
+    {
+      path: '/sample',
+      name: 'Sample',
+      component: Sample,
+    },
     {
       path: '/',
       redirect: {
@@ -63,6 +70,14 @@ const router = new Router({
       },
     },
     {
+      path: '/services',
+      name: 'Services',
+      component: ServiceIndex,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
       path: '/profile',
       name: 'Profile',
       component: Profile,
@@ -94,7 +109,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (store.getters.authenticated) {
-    to.meta.viewContainerClass = `cs-view-container-at-auth ${to.meta.viewContainerClass || ''}`; /* eslint no-param-reassign: off */
+    to.meta.viewContainerClass = `-x-view-container-at-auth ${to.meta.viewContainerClass || ''}`; /* eslint no-param-reassign: off */
   }
 
   next();

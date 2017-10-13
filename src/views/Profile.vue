@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-view cs-view-content">
+  <div class="-x-view -x-view-content">
 
     <ul>
       <li>name: {{user.name}}</li>
@@ -27,8 +27,8 @@ export default {
     },
   },
 
-  created() {
-    this.$store.dispatch('AUTH_REFRESH');
+  beforeMount() {
+    this.$store.dispatch('reloadProfile');
   },
 
 };
