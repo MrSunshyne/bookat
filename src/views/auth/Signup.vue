@@ -1,13 +1,13 @@
 <template>
   <div class="-x-view">
 
-    <div class="c-text-center">
+    <div class="text-xs-center">
       <img src="../../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
-    <div class="title c-text-center">Signup</div>
+    <div class="title text-xs-center">Signup</div>
 
-    <form class="-x-flex-column" novalidate @submit.prevent="signup">
+    <form class="layout column" novalidate @submit.prevent="signup">
 
       <v-text-field id="name_input"
         type="name"
@@ -61,14 +61,12 @@
 
       <v-btn flat color="primary" v-if="$store.getters.development" @click="fillWithDemoData">Fill with Demo Data</v-btn>
 
-      <div class="-x-flex-row">
+      <v-layout row child-flex>
         <v-btn flat class="btn-google" title="Signup with Google" @click="loginWithGoogle">Google</v-btn>
         <v-btn flat class="btn-facebook" title="Signup with Facebook" @click="loginWithFacebook">Facebook</v-btn>
-      </div>
+      </v-layout>
 
       <v-btn id="submit" raised color="primary" type="submit">Signup</v-btn>
-
-      <x-snackbar ref="snackbar"></x-snackbar>
 
     </form>
 
@@ -83,6 +81,8 @@
       </v-btn>
 
     </div>
+
+    <x-snackbar ref="snackbar"></x-snackbar>
 
   </div>
 </template>

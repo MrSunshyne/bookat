@@ -1,10 +1,11 @@
 <template>
   <div class="-x-view">
-    <div class="c-text-center">
+
+    <div class="text-xs-center">
       <img src="../../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
-    <form class="-x-flex-column" novalidate @submit.prevent="login">
+    <form class="layout column" novalidate @submit.prevent="login">
 
       <v-text-field id="email_input"
         type="email"
@@ -31,12 +32,10 @@
 
       <v-btn id="submit" raised color="primary" type="submit">Login</v-btn>
 
-      <div class="-x-flex-row">
+      <v-layout row child-flex>
         <v-btn raised class="btn-google" title="Login with Google" @click="loginWithGoogle">Google</v-btn>
         <v-btn raised class="btn-facebook" title="Login with Facebook" @click="loginWithFacebook">Facebook</v-btn>
-      </div>
-
-      <x-snackbar ref="snackbar"></x-snackbar>
+      </v-layout>
 
     </form>
 
@@ -60,6 +59,8 @@
       </v-btn>
 
     </div>
+
+    <x-snackbar ref="snackbar"></x-snackbar>
 
   </div>
 </template>

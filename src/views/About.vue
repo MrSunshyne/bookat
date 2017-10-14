@@ -3,7 +3,7 @@
 
     <about-content></about-content>
 
-    <div class="-x-flex-row" v-if="!$store.getters.authenticated">
+    <v-layout row child-flex v-if="!$store.getters.authenticated">
 
       <v-btn flat color="primary" class="link-item" to="/login">
         Login
@@ -13,7 +13,7 @@
         Signup
       </v-btn>
 
-    </div>
+    </v-layout>
 
   </div>
 </template>

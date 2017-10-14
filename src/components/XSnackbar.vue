@@ -4,7 +4,7 @@
       v-model="visible"
     >
       {{ content }}
-      <v-btn dark flat color="primary" @click.native="hide">Ok</v-btn>
+      <v-btn dark flat small style="min-width: unset;" @click.native="hide">Ok</v-btn>
     </v-snackbar>
 </template>
 

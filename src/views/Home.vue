@@ -1,6 +1,6 @@
 <template>
   <div class="-x-view">
-    <div class="c-text-center">
+    <div class="text-xs-center">
       <img src="../assets/logo.png" alt="BOOKAT">
       <h1>{{ msg }}</h1>
     </div>

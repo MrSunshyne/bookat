@@ -1,13 +1,13 @@
 <template>
   <div class="-x-view">
 
-    <div class="c-text-center">
+    <div class="text-xs-center">
       <img src="../../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
-    <div class="title c-text-center">Account Reset</div>
+    <div class="title text-xs-center">Account Reset</div>
 
-    <form class="-x-flex-column" novalidate @submit.prevent="next" v-if="!done">
+    <form class="layout column" novalidate @submit.prevent="next" v-if="!done">
 
       <v-text-field id="email_input"
         type="email"
@@ -30,8 +30,6 @@
       Please check your inbox for password reset email.
     </div>
 
-    <x-snackbar ref="snackbar"></x-snackbar>
-
     <div class="link-container">
 
       <v-btn id="login" flat color="primary" class="link-item" to="/login">
@@ -43,6 +41,8 @@
       </v-btn>
 
     </div>
+
+    <x-snackbar ref="snackbar"></x-snackbar>
 
   </div>
 </template>

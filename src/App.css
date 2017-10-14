@@ -34,29 +34,6 @@ html {
   right: 0;
 }
 
-.-x-flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.-x-flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.-x-flex-row>*,
-.-x-flex-column>* {
-  flex: 1;
-}
-
-.-x-flex-cell {
-  flex: 1;
-}
-
-.c-text-center {
-  text-align: center;
-}
-
 .-x-view-container {
   display: flex;
   justify-content: center;
