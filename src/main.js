@@ -1,6 +1,8 @@
 
-import '@/common/config';
 import '@/common/debug';
+
+import '@/common/config';
+import '@/common/event';
 
 import Vue from 'vue';
 

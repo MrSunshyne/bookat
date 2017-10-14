@@ -5,7 +5,8 @@
       <img src="../assets/logo.png" alt="BOOKAT" class="logo">
     </div>
 
-    <p class="subheading i-body-1 mt-4">BOOKAT is a generic and simple solution for booking services..</p>
+    <p class="subheading i-body-1 mt-4">BOOKAT is a generic and simple solution for booking services...</p>
+    <p class="subheading i-body-1 mt-4">It is being built with Firebase Vue.js, vue-router, Vuex, Firebase... Check the code at <a href="https://github.com/naderio/bookat" target="_blank" rel="noopener">GitHub</a></p>
 
     <v-list two-line style="background: transparent;">
 
