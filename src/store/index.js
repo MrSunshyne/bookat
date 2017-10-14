@@ -9,7 +9,7 @@ import router from '@/router';
 import { firebase } from '@/common/firebase';
 import { getCurrentUserFromFirebase } from '@/common/auth';
 
-// const debug = debugFactory('@/views/auth/Login');
+// const debug = debugFactory('@/store');
 
 Vue.use(Vuex);
 
@@ -28,9 +28,7 @@ const store = new Vuex.Store({
 
   mutations: {
 
-    LOADING(state, {
-      loading,
-    }) {
+    LOADING(state, loading) {
       state.loading = loading;
     },
 

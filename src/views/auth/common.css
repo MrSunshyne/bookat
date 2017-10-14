@@ -14,12 +14,20 @@
   flex: 1;
 }
 
-.btn-facebook {
-  background-color: #3B5998;
+.btn-google:not(.btn--flat) {
+  background-color: #DD4B39 !important;
   color: #FFFFFF;
 }
 
-.btn-google {
-  background-color: #DD4B39;
+.btn-google.btn--flat {
+  color: #DD4B39;
+}
+
+.btn-facebook:not(.btn--flat) {
+  background-color: #3B5998 !important;
   color: #FFFFFF;
+}
+
+.btn-facebook.btn--flat {
+  color: #3B5998;
 }
